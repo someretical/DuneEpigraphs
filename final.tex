@@ -1,0 +1,3168 @@
+\documentclass[a4paper, 12pt, oldfontcommands, final]{memoir}
+
+\usepackage[T1]{fontenc}
+
+% fancy chapter headings
+\chapterstyle{ger}
+\renewcommand{\chaptername}{Book}
+
+% custom fleurons between every epigraph
+\usepackage{fourier}
+\renewcommand{\pfbreakdisplay}{{\quad}\\\decofourleft\decotwo\decofourright\\{\quad}}
+
+% replace computer modern with palatino
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % make page density roughly the same as computer modern
+
+% better control over spacing and kerning, less hypenations
+\usepackage{microtype}
+
+% index
+\usepackage{imakeidx}
+
+% patch imakeidx to support custom build directory
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\imki@putindex
+  {\imki@exec{\imki@program \imki@options #1.idx}}          %% OLD CODE
+  {\imki@exec{cd build;\imki@program\imki@options#1.idx}}   %% NEW CODE: cd to build directory first
+  {\message{Patch succeeded in imki@putindex}}
+  {\errmessage{Patch failed in imki@putindex}}
+\makeatother
+
+\indexsetup{othercode=\small}
+\makeindex[intoc]
+
+% get metadata
+\usepackage{authoraftertitle}
+
+% disable default paragraph indentation for epigraphs
+\setlength{\parindent}{0pt}
+
+% indent the author of epigraphs
+\usepackage{changepage}
+
+% make blank pages not have headers and footers
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\begingroup
+\mbox{}
+\vspace*{\fill}
+\vspace{\fill}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\mbox{}\newpage\fi
+\endgroup\fi\fi}
+\makeatother
+
+% headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% make chapter heading pages have headers and footers
+\makeatletter
+\let\stdchapter\chapter
+\renewcommand*\chapter{%
+\@ifstar{\starchapter}{\@dblarg\nostarchapter}}
+\newcommand*\starchapter[1]{%
+\stdchapter*{#1}
+\thispagestyle{fancy}
+}
+\def\nostarchapter[#1]#2{%
+\stdchapter[{#1}]{#2}
+\thispagestyle{fancy}
+}
+\makeatother
+
+% page numbers
+\fancyhead[LE,RO]{\footnotesize\textbf{\thepage}}
+
+% top text
+\fancyhead[LO]{\itshape\footnotesize\nouppercase\leftmark}
+\fancyhead[RE]{\itshape\footnotesize\nouppercase\rightmark}
+
+% book title bottom text
+\fancyfoot[LE]{\footnotesize\MyTitle}
+\fancyfoot[RO]{\footnotesize\MyTitle}
+
+% customise top text
+\renewcommand{\chaptermark}[1]{\markboth{#1}{Book~\thechapter}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+
+% links
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Dune Epigraphs},
+pdfauthor={},
+pdfsubject={Dune}
+}
+
+\title{Dune Epigraphs}
+\author{}
+
+% custom title page
+\newlength{\drop}
+\newcommand*{\titleGM}{\begingroup
+\drop = 0.1\textheight
+\hbox{%
+\hspace*{0.2\textwidth}%
+\rule{1pt}{\textheight}
+\hspace*{0.05\textwidth}%
+\parbox[b]{0.75\textwidth}{
+\vbox{
+%
+\vspace{\drop}
+{\noindent\huge\bfseries Dune\\[0.5\baselineskip]
+Epigraphs}\\[2\baselineskip]
+{\Large\itshape Compiled from the Dune Chronicles}\\[4\baselineskip]
+{\Large}\par
+\vspace{0.5\textheight}
+{\noindent}\\[\baselineskip]
+}% end of vbox
+}% end of parbox
+}% end of hbox
+\endgroup}
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\begin{document}
+
+\frontmatter
+
+\begin{titlingpage*}
+\titleGM
+\end{titlingpage*}
+
+\tableofcontents
+\thispagestyle{fancy}
+
+\mainmatter
+
+\chapter{Dune}
+
+\section{Dune}
+
+\vbox{
+A beginning is the time for taking the most delicate care that the balances are correct. This every sister of the Bene Gesserit\index{Bene Gesserit} knows. To begin your study of the life of Muad'Dib\index{Muad'Dib}, then, take care that you first place him in his time: born in the 57th year of the Padishah Emperor\index{Padishah Emperor}, Shaddam IV\index{Shaddam IV}. And take the most special care that you locate Muad'Dib\index{Muad'Dib} in his place: the planet Arrakis\index{Arrakis}. Do not be deceived by the fact that he was born on Caladan\index{Caladan} and lived his first fifteen years there. Arrakis\index{Arrakis}, the planet known as Dune\index{Dune}, is forever his place.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Manual of Muad'Dib\index{Manual of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+To attempt an understanding of Muad'Dib\index{Muad'Dib} without understanding his mortal enemies, the Harkonnens\index{the Harkonnens}, is to attempt seeing Truth without knowing Falsehood\index{Truth without knowing Falsehood}. It is the attempt to see the Light without knowing Darkness\index{Light without knowing Darkness}. It cannot be.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Manual of Muad'Dib\index{Manual of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Thus spoke St. Alia-of-the-Knife\index{St. Alia-of-the-Knife}: ``The Reverend Mother\index{Reverend Mother} must combine the seductive wiles of a courtesan with the untouchable majesty of a virgin goddess, holding these attributes in tension so long as the powers of her youth endure. For when youth and beauty have gone, she will find that the \emph{place-between}\index{place-between}, once occupied by tension, has become a wellspring of cunning and resourcefulness.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Muad'Dib, Family Commentaries\index{Muad'Dib, Family Commentaries}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You have read that Muad'Dib\index{Muad'Dib} had no playmates his own age on Caladan\index{Caladan}. The dangers were too great. But Muad'Dib\index{Muad'Dib} did have wonderful companion-teachers. There was Gurney Halleck\index{Gurney Halleck}, the troubadour-warrior. You will sing some of Gurney\index{Gurney}'s songs as you read along in this book. There was Thufir Hawat\index{Thufir Hawat}, the old Mentat Master of Assassins\index{Mentat Master of Assassins}, who struck fear even into the heart of the Padishah Emperor\index{Padishah Emperor}. There was Duncan Idaho\index{Duncan Idaho}, the Swordmaster of Ginaz\index{Swordmaster of Ginaz}; Dr. Wellington Yueh\index{Dr. Wellington Yueh}, a name black in treachery but bright in knowledge; the Lady Jessica\index{Lady Jessica}, who guided her son in the Bene Gesserit Way\index{Bene Gesserit Way}, and---of course---the Duke Leto\index{Duke Leto}, whose qualities as a father have long been overlooked.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``A Child's History of Muad'Dib\index{A Child's History of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+YUEH\index{YUEH} (yü'ç), Wellington (weling-tun), Stdrd 10,082-10,191; medical doctor of the Suk School\index{Suk School} (grd Stdrd 10,112); md: Wanna Marcus\index{Wanna Marcus}, B.G. (Stdrd 10,092-10,186?); chiefly noted as betrayer of Duke Leto Atreides\index{Duke Leto Atreides}. (Cf: Bibliography, Appendix VII [Imperial Conditioning\index{Imperial Conditioning}] and Betrayal, The.)
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Dictionary of Muad'Dib\index{Dictionary of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+How do we approach the study of Muad'Dib\index{Muad'Dib}'s father? A man of surpassing warmth and surprising coldness was the Duke Leto Atreides\index{Duke Leto Atreides}. Yet, many facts open the way to this Duke: his abiding love for his Bene Gesserit\index{Bene Gesserit} lady; the dreams he held for his son; the devotion with which men served him. You see him there---a man snared by Destiny\index{Destiny}, a lonely figure with his light dimmed behind the glory of his son. Still, one must ask: What is the son but an extension of the father?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Muad'Dib, Family Commentaries\index{Muad'Dib, Family Commentaries}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+With the Lady Jessica\index{Lady Jessica} and Arrakis\index{Arrakis}, the Bene Gesserit\index{Bene Gesserit} system of sowing implant-legends through the Missionaria Protectiva\index{Missionaria Protectiva} came to its full fruition. The wisdom of seeding the known universe with a prophecy pattern for the protection of B.G. personnel\index{B.G. personnel} has long been appreciated, but never have we see a condition-ut-extremis\index{condition-ut-extremis} with more ideal mating of person and preparation. The prophetic legends had taken on Arrakis\index{Arrakis} even to the extent of adopted labels (including Reverend Mother\index{Reverend Mother}, canto and respondu\index{canto and respondu}, and most of the Shari-a panoplia propheticus\index{Shari-a panoplia propheticus}). And it is generally accepted now that the Lady Jessica\index{Lady Jessica}'s latent abilities were grossly underestimated.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Analysis: The Arrakeen Crisis\index{Analysis: The Arrakeen Crisis}'' by the Princess Irulan\index{Princess Irulan}
+[private circulation: B.G. file number AR-81088587]
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``Yueh\index{Yueh}! Yueh! Yueh!'' goes the refrain. ``A million deaths were not enough for Yueh!''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``A Child's History of Muad'Dib\index{A Child's History of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Many have marked the speed with which Muad'Dib\index{Muad'Dib} learned the necessities of Arrakis\index{Arrakis}. The Bene Gesserit\index{Bene Gesserit}, of course, know the basis of this speed. For the others, we can say that Muad'Dib\index{Muad'Dib} learned rapidly because his first training was in how to learn. And the first lesson of all was the basic trust that he could learn. It is shocking to find how many people do not believe they can learn, and how many more believe learning to be difficult. Muad'Dib\index{Muad'Dib} knew that every experience carries its lesson.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``The Humanity of Muad'Dib\index{Humanity of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What had the Lady Jessica\index{Lady Jessica} to sustain her in her time of trial? Think you carefully on this Bene Gesserit\index{Bene Gesserit} proverb and perhaps you will see: ``Any road followed precisely to its end leads precisely nowhere. Climb the mountain just a little bit to test that it's a mountain. From the top of the mountain, you cannot see the mountain.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Muad'Dib: Family Commentaries\index{Muad'Dib: Family Commentaries}''  by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+It is said that the Duke Leto\index{Duke Leto} blinded himself to the perils of Arrakis\index{Arrakis}, that he walked heedlessly into the pit. Would it not be more likely to suggest he had lived so long in the presence of extreme danger he misjudged a change in its intensity? Or is it possible he deliberately sacrificed himself that his son might find a better life? All evidence indicates the Duke\index{the Duke} was a man not easily hoodwinked.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Muad'Dib: Family Commentaries\index{Muad'Dib: Family Commentaries}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Over the exit of the Arrakeen\index{Arrakeen} landing field, crudely carved as though with a poor instrument, there was an inscription that Muad'Dib\index{Muad'Dib} was to repeat may times. He saw it that first night on Arrakis\index{Arrakis}, having been brought to the ducal command post to participate in his father's first staff conference. The words of the inscription were a plea to those leaving Arrakis\index{Arrakis}, but they fell with a dark import on the eyes of a boy who had just escaped a close brush with death. They said: ``O you who know what we suffer here, do not forget us in your prayers.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Manual of Muad'Dib\index{Manual of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+On that first day when Muad'Dib\index{Muad'Dib} rode through the streets of Arrakeen\index{Arrakeen} with his family, some of the people along the way recalled the legends and the prophecy and they ventured to shout: ``Mahdi\index{Mahdi}!'' But their shout was more a question than a statement, for as yet they could only hope he was the one foretold as the Lisan al-Gaib\index{Lisan al-Gaib}, the Voice from the Outer World\index{Voice from the Outer World}. Their attention was focused, too, on the mother, because they had heard she was a Bene Gesserit\index{Bene Gesserit} and it was obvious to them that she was like the other Lisan al-Gaib\index{Lisan al-Gaib}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Manual of Muad'Dib\index{Manual of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``There is probably no more terrible instant of enlightenment than the one in which you discover your father is a man---with human flesh.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+My father, the Padishah Emperor\index{Padishah Emperor}, took me by the hand one day and I sensed in the ways my mother had taught me that he was disturbed. He led me down the Hall of Portraits\index{Hall of Portraits} to the ego-likeness of the Duke Leto Atreides\index{Duke Leto Atreides}. I marked the strong resemblance between them---my father and this man in the portrait---both with thin, elegant faces and sharp features dominated by cold eyes. ``Princess-daughter\index{Princess-daughter},'' my father said, ``I would that you'd been older when it came time for this man to choose a woman.'' My father was 71 at the time and looking no older than the man in the portrait, and I was but 14, yet I remember deducing in that instant that my father secretly wished the Duke\index{the Duke} had been his son, and disliked the political necessities that made them enemies.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``In My Father's House\index{In My Father's House}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Greatness\index{Greatness} is a transitory experience. It is never consistent. It depends in part upon the myth-making imagination of humankind. The person who experiences greatness must have a feeling for the myth he is in. He must reflect what is projected upon him. And he must have a strong sense of the sardonic. This is what uncouples him from belief in his own pretensions. The sardonic is all that permits him to move within himself. Without this quality, even occasional greatness will destroy a man.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``There is no escape--we pay for the violence of our ancestors.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``The Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Do you wrestle with dreams?
+
+Do you contend with shadows?
+
+Do you move in a kind of sleep?
+
+Time has slipped away.
+
+Your life is stolen.
+
+You tarried with trifles,
+
+Victim of your folly.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Dirge for Jamis on the Funeral Plain\index{Dirge for Jamis on the Funeral Plain}, from ``Songs of Muad'Dib\index{Songs of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There should be a science of discontent. People need hard times and oppression to develop psychic muscles.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Arrakis\index{Arrakis} teaches the attitude of the knife---chopping off what's incomplete and saying: ``Now, it's complete because it's ended here.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There is a legend that the instant Duke Leto Atreides\index{Duke Leto Atreides} died a meteor streaked across the skies above his ancestral palace on Caladan\index{Caladan}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- the Princess Irulan\index{Princess Irulan}: ``Introduction to A Child's History of Muad'Dib\index{Introduction to A Child's History of Muad'Dib}''
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+O Seas of Caladan\index{Caladan},
+
+O people of Duke Leto\index{Duke Leto}--
+
+Citadel of Leto\index{Citadel of Leto} fallen,
+
+Fallen forever $\ldots$
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Songs of Muad'Dib\index{Songs of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\section{Muad'Dib}
+
+\vbox{
+When my father, the Padishah Emperor\index{Padishah Emperor}, heard of Duke Leto\index{Duke Leto}'s death and the manner of it, he went into such a rage as we had never before seen. He blamed my mother and the compact forced on him to place a Bene Gesserit\index{Bene Gesserit} on the throne. He blamed the Guild\index{Guild} and the evil old Baron\index{the evil old Baron}. He blamed everyone in sight, not excepting even me, for he said I was a witch like all the others. And when I sought to comfort him, saying it was done according to an older law of self-preservation to which even the most ancient rulers gave allegiance, he sneered at me and asked if I thought him a weakling. I saw then that he had been aroused to this passion not by concern over the dead Duke\index{the dead Duke} but by what that death implied for all royalty. As I look back on it, I think there may have been some prescience in my father, too, for it is certain that his line and Muad'Dib\index{Muad'Dib}'s shared common ancestry.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``In My Father's House\index{In My Father's House}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+My father once told me that respect for the truth comes close to being the basis for all morality. ``Something cannot emerge from nothing,'' he said. This is profound thinking if you understand how unstable ``the truth'' can be.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Conversations with Muad'Dib\index{Conversations with Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Muad'Dib\index{Muad'Dib} could indeed, see the Future\index{Future}, but you must understand the limits of this power. Think of sight. You have eyes, yet cannot see without light. If you are on the floor of a valley, you cannot see beyond your valley. Just so, Muad'Dib\index{Muad'Dib} could not always choose to look across the mysterious terrain. He tells us that a single obscure decision of prophecy, perhaps the choice of one word over another, could change the entire aspect of the future. He tells us ``The vision of time is broad, but when you pass through it, time becomes a narrow door.'' And always, he fought the temptation to choose a clear, safe course, warning ``That path leads ever down into stagnation.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Arrakis Awakening\index{Arrakis Awakening}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What do you Despise\index{Despise}? By this are you truly known.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Manual of Muad'Dib\index{Manual of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+At the age of fifteen, he had already learned silence.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``A Child's History of Muad'Dib\index{A Child's History of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We came from Caladan\index{Caladan}---a paradise world for our form of life. There existed no need on Caladan\index{Caladan} to build a physical paradise or a paradise of the mind---we could see the actuality all around us. And the price we paid was the price men have always paid for achieving a paradise in this life---we went soft, we lost our edge.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Muad'Dib: Conversations\index{Muad'Dib: Conversations}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Family life of the Royal Creche\index{Royal Creche} is difficult for many people to understand, but I shall try to give you a capsule view of it. My father had only one real friend, I think. That was Count Hasimir Fenring\index{Count Hasimir Fenring}, the genetic-eunuch and one of the deadliest fighters in the Imperium\index{Imperium}. The Count\index{The Count}, a dapper and ugly little man, brought a new slave-concubine to my father one day and I was dispatched by my mother to spy on the proceedings. All of us spied on my father as a matter of self-protection. One of the slave-concubines permitted my father under the Bene Gesserit\index{Bene Gesserit}-Guild\index{Guild} agreement could not, of course, bear a Royal Successor\index{Royal Successor}, but the intrigues were constant and oppressive in their similarity. We became adept, my mother and sisters and I, at avoiding subtle instruments of death. It may seem a dreadful thing to say, but I'm not at all sure my father was innocent in all these attempts. A Royal Family\index{Royal Family} is not like other families. Here was a new slave-concubine, then, red-haired like my father, willowy and graceful. She had a dancer's muscles, and her training obviously had included neuro-enticement. My father looked at her for a long time as she postured unclothed before him. Finally he said: ``She is too beautiful. We will save her as a gift.'' You have no idea how much consternation this restraint created in the Royal Creche\index{Royal Creche}. Subtlety and self-control were, after all, the most deadly threats to us all.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``In My Father's House\index{In My Father's House}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+This Fremen\index{Fremen} religious adaptation, then, is the source of what we now recognize as ``The Pillars of the Universe\index{Pillars of the Universe},'' whose Qizara Tafwid\index{Qizara Tafwid} are among us all with signs and proffs and prophecy. They bring us the Arrakeen\index{Arrakeen} mystical fusion whose profound beauty is typified by the stirring music built on the old forms, but stamped with the new awakening. Who has not heard and been deeply moved by ``The Old Man's Hymn\index{Old Man's Hymn}''?
+
+\quad
+
+I drove my feet through a desert
+
+Whose mirage fluttered like a host.
+
+Voracious for glory, greedy for danger,
+
+I roamed the horizons of al-Kulab\index{al-Kulab},
+
+Watching time level mountains
+
+In its search and its hunger for me.
+
+And I saw the sparrows swiftly approach,
+
+Bolder than the onrushing wolf.
+
+They spread in the tree of my youth.
+
+I heard the flock in my branches
+
+And was caught on their beaks and claws!
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Arrakis Awakening\index{Arrakis Awakening}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Prophecy and prescience---How can they be put to the test in the face of the unanswered questions? Consider: How much is actual prediction of the ``wave form\index{wave form}'' (as Muad'Dib\index{Muad'Dib} referred to his vision-image) and how much is the prophet shaping the future to fit the prophecy? What of the harmonics inherent in the act of prophecy? Does the prophet see the future or does he see a line of weakness, a fault or cleavage that he may shatter with words or decisions as a diamond-cutter shatters his gem with a blow of a knife?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``Private Reflections on Muad'Dib\index{Private Reflections on Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The Fremen\index{Fremen} were supreme in that quality the ancients called ``spannungsbogen\index{spannungsbogen}''---which is the self-imposed delay between desire for a thing and the act of reaching out to grasp that thing.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``The Wisdom of Muad'Dib\index{Wisdom of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+My father, the Padishah Emperor\index{Padishah Emperor}, was 72 yet looked no more than 35 the year he encompassed the death of Duke Leto\index{Duke Leto} and gave Arrakis\index{Arrakis} back to the Harkonnens\index{Harkonnens}. He seldom appeared in public wearing other than a Sardaukar\index{Sardaukar} uniform and a Burseg\index{Burseg}'s black helmet with the Imperial lion in gold upon its crest. The uniform was an open reminder of where his power lay. He was not always that blatant, though. When he wanted, he could radiate charm and sincerity, but I often wonder in these later days if anything about him was as it seemed. I think now he was a man fighting constantly to escape the bars of an invisible cage. You must remember that he was an emperor, father-head of a dynasty that reached back into the dimmest history. But we denied him a legal son. Was this not the most terrible defeat a ruler ever suffered? My mother obeyed her Sister Superiors\index{Sister Superiors} where the Lady Jessica\index{Lady Jessica} disobeyed. Which of them was the stronger? History already has answered.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``In My Father's House\index{In My Father's House}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+God\index{God} created Arrakis\index{Arrakis} to train the faithful.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``The Wisdom of Muad'Dib\index{Wisdom of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The concept of progress acts as a protective mechanism to shield us from the terrors of the future.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Muad'Dib\index{Muad'Dib} tells us in ``A Time of Reflection\index{A Time of Reflection}'' that his first collisions with Arrakeen\index{Arrakeen} necessities were the true beginnings of his education. He learned then how to pole the sand for its weather, learned the language of the wind's needles stinging his skin, learned how the nose can buzz with sand-itch and how to gather his body's precious moisture around him to guard it and preserve it. As his eyes assumed the blue of the Ibad\index{Ibad}, he learned the Chakosba\index{Chakosba} way.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Stilgar's preface\index{Stilgar's preface} to ``Muad'Dib, the Man\index{Muad'Dib, the Man}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The hands move, the lips move---
+
+Ideas gush from his words,
+
+And his eyes devour!
+
+He is an island of Selfdom\index{Selfdom}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- description from ``A Manual of Muad'Dib\index{A Manual of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\section{The Prophet}
+
+\vbox{
+No woman, no man, no child ever was deeply intimate with my father. The closest anyone ever came to casual camaraderie with the Padishah Emperor\index{Padishah Emperor} was the relationship offered by Count Hasimir Fenring\index{Count Hasimir Fenring}, a companion from childhood. The measure of Count Fenring\index{Count Fenring}'s friendship may be seen first in a positive thing: he allayed the Landsraad\index{Landsraad}'s suspicions after the Arrakis Affair\index{Arrakis Affair}. It cost more than a billion solaris in spice bribes, so my mother said, and there were other gifts as well: slave women, royal honours, and tokens of rank. The second major evidence of the Count\index{the Count}'s friendship was negative. He refused to kill a man even though it was within his capabilities and my father commanded it. I will relate this presently.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``Count Fenring: A Profile\index{Count Fenring: A Profile}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Deep in the human unconscious is a pervasive need for a logical universe that makes sense. But the real universe is always one step beyond logic.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``The Sayings of Muad'Dib\index{Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There is in all things a pattern that is part of our universe. It has symmetry, elegance, and grace---those qualities you find always in that which the true artist captures. You can find it in the turning of the seasons, in the way sand trails along a ridge, in the branch clusters of the creosote bush or the pattern of its leaves. We try to copy these patterns in our lives and our society, seeking the rhythms, the dances, the forms that comfort. Yet, it is possible to see peril in the finding of ultimate perfection. It is clear that the ultimate pattern contains its own fixity. In such perfection, all things move toward death.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``The Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``Control the coinage and the courts---let the rabble have the rest.'' Thus the Padishah Emperor\index{Padishah Emperor} advises you. And he tells you: ``If you want profits, you must rule.'' There is truth in these words, but I ask myself: ``Who are the rabble and who are the ruled?''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Muad'Dib's Secret Message to the Landsraad\index{Muad'Dib's Secret Message to the Landsraad} from ``Arrakis Awakening\index{Arrakis Awakening}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You cannot avoid the interplay of politics within an orthodox religion. This power struggle permeates the training, educating and disciplining of the orthodox community. Because of this pressure, the leaders of such a community inevitably must face that ultimate internal question: to succumb to complete opportunism as the price of maintaining their rule, or risk sacrificing themselves for the sake of the orthodox ethic.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Muad'Dib: The Religious Issues\index{Muad'Dib: The Religious Issues}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+When law and duty are one, united by religion, you never become fully conscious, fully aware of yourself. You are always a little less than an individual.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Muad'Dib: The Ninety-Nine Wonders of the Universe\index{Muad'Dib: The Ninety-Nine Wonders of the Universe}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+How often it is that the angry man rages denial of what his inner self is telling him.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``The Collected Sayings of Muad'Dib\index{Collected Sayings of Muad'Dib}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+And it came to pass in the third year of the Desert War\index{Desert War} that Paul Muad'Dib\index{Paul Muad'Dib} lay alone in the Cave of Birds\index{Cave of Birds} beneath the kiswa hangings of an inner cell. And he lay as one dead, caught up in the revelation of the Water of Life\index{Water of Life}, his being translated beyond the boundaries of time by the poison that gives life. Thus was the prophecy made true that the Lisan al-Gaib\index{Lisan al-Gaib} might be both dead and alive.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``Collected Legends of Arrakis\index{Collected Legends of Arrakis}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+And that day dawned when Arrakis\index{Arrakis} lay at the hub of the universe with the wheel poised to spin.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Arrakis Awakening\index{Arrakis Awakening}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+And Muad'Dib\index{Muad'Dib} stood before them, and he said: ``Though we deem the captive dead, yet does she live. For her seed is my seed and her voice is my voice. And she sees unto the farthest reaches of possibility. Yeah, unto the vale of the unknowable does she see because of me.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Arrakis Awakening\index{Arrakis Awakening}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+He was warrior and mystic, ogre and saint, the fox and the innocent, chivalrous, ruthless, less than a god\index{god}, more than a man. There is no measuring Muad'Dib\index{Muad'Dib}'s motives by ordinary standards. In the moment of his triumph, he saw the death prepared for him, yet he accepted the treachery. Can you say he did this out of a sense of justice? Whose justice, then? Remember, we speak now of the Muad'Dib\index{Muad'Dib} who ordered battle drums made from his enemies' skins, the Muad'Dib\index{Muad'Dib} who denied the conventions of his ducal past with a wave of the hand, saying merely: ``I am the Kwisatz Haderach\index{Kwisatz Haderach}. That is reason enough.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from ``Arrakis Awakening\index{Arrakis Awakening}'' by the Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Beyond a critical point within a finite space, freedom diminishes as numbers increase. This is as true of humans in the finite space of a planetary ecosystem as it is of gas molecules in a sealed flask. The human question is not how many can possibly survive within the system, but what kind of existence is possible for those who do survive.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Pardot Kynes\index{Pardot Kynes}, First Planetologist of Arrakis\index{First Planetologist of Arrakis}
+\end{adjustwidth}
+}
+
+\chapter{Dune Messiah}
+
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{chapter}.\arabic{section}~~~ Death Cell Interview Excerpts}
+
+\paragraph{Q:} \hangindent=2em What led you to take your particular approach to a history of Muad'Dib\index{Muad'Dib}?
+\paragraph{A:} \hangindent=2em Why should I answer your questions?
+\paragraph{Q:} \hangindent=2em Because I will preserve your words.
+\paragraph{A:} \hangindent=2em Ahhh! The ultimate appeal to a historian\index{historian}!
+\paragraph{Q:} \hangindent=2em Will you cooperate then?
+\paragraph{A:} \hangindent=2em Why not? But you'll never understand what inspired my Analysis of History\index{Analysis of History}. Never. You Priests have too much at stake to $\ldots$ 
+\paragraph{Q:} \hangindent=2em Try me.
+\paragraph{A:} \hangindent=2em Try you? Well, again $\ldots$ why not? I was caught by the shallowness of the common view of this planet which arises from its popular name: Dune\index{Dune}. Not Arrakis\index{Arrakis}, notice, but Dune\index{Dune}. History is obsessed by Dune\index{Dune} as desert, as birthplace of the Fremen\index{Fremen}. Such history concentrates on the customs which grew out of water scarcity and the fact that Fremen\index{Fremen} led semi-nomadic lives in stillsuits\index{stillsuits} which recovered most of their body's moisture.
+\paragraph{Q:} \hangindent=2em Are these things not true, then?
+\paragraph{A:} \hangindent=2em They are surface truth. As well ignore what lies beneath that surface as $\ldots$ as try to understand my birthplanet, Ix\index{Ix}, without exploring how we derived our name from the fact that we are the ninth planet of our sun. No $\ldots$ no. It is not enough to see Dune\index{Dune} as a place of savage storms. It is not enough to talk about the threat posed by the gigantic sandworms.
+\paragraph{Q:} \hangindent=2em But such things are crucial to the Arrakeen character\index{Arrakeen character}!
+\paragraph{A:} \hangindent=2em Crucial? Of course. But they produce a one-view planet in the same way that Dune\index{Dune} is a one-crop planet because it is the sole and exclusive source of the spice, melange\index{melange}.
+\paragraph{Q:} \hangindent=2em Yes. Let us hear you expand on the sacred spice.
+\paragraph{A:} \hangindent=2em Sacred! As with all things sacred, it gives with one hand and takes with the other. It extends life and allows the adept to foresee his future, but it ties him to a cruel addiction and marks his eyes as yours are marked: total blue without any white. Your eyes, your organs of sight, become one thing without contrast, a single view.
+\paragraph{Q:} \hangindent=2em Such heresy brought you to this cell!
+\paragraph{A:} \hangindent=2em I was brought to this cell by your Priests. As with all priests, you learned early to call the truth heresy.
+\paragraph{Q:} \hangindent=2em You are here because you dared to say that Paul Atreides\index{Paul Atreides} lost something essential to his humanity before he could become Muad'Dib\index{Muad'Dib}.
+\paragraph{A:} \hangindent=2em Not to speak of his losing his father here in the Harkonnen war\index{Harkonnen war}. Nor the death of Duncan Idaho\index{Duncan Idaho}, who sacrificed himself that Paul\index{Paul} and the Lady Jessica\index{Lady Jessica} could escape.
+\paragraph{Q:} \hangindent=2em Your cynicism is duly noted.
+\paragraph{A:} \hangindent=2em Cynicism! That, no doubt is a greater crime than heresy. But, you see, I'm not really a cynic. I'm just an observer and commentator. I saw true nobility in Paul\index{Paul} as he fled into the desert with his pregnant mother. Of course, she was a great asset as well as a burden.
+\paragraph{Q:} \hangindent=2em The flaw in you historians is that you'll never leave well enough alone. You see true nobility in the Holy Muad'Dib\index{Holy Muad'Dib}, but you must append a cynical footnote. It's no wonder that the Bene Gesserit\index{Bene Gesserit} also denounce you.
+\paragraph{A:} \hangindent=2em You Priests do well to make common cause with the Bene Gesserit Sisterhood\index{Bene Gesserit Sisterhood}. They, too, survive by concealing what they do. But they cannot conceal the fact that the Lady Jessica\index{Lady Jessica} was a Bene Gesserit–trained\index{Bene Gesserit–trained} adept. You know she trained her son in the sisterhood's ways. My crime was to discuss this as a phenomenon, to expound upon their mental arts and their genetic program. You don't want attention called to the fact that Muad'Dib\index{Muad'Dib} was the Sisterhood\index{Sisterhood}'s hoped for captive messiah, that he was their kwisatz haderach\index{kwisatz haderach} before he was your prophet.
+\paragraph{Q:} \hangindent=2em If I had any doubts about your death sentence, you have dispelled them.
+\paragraph{A:} \hangindent=2em I can only die once.
+\paragraph{Q:} \hangindent=2em There are deaths and there are deaths.
+\paragraph{A:} \hangindent=2em Beware lest you make a martyr of me. I do not think Muad'Dib\index{Muad'Dib} $\ldots$ Tell me, does Muad'Dib\index{Muad'Dib} know what you do in these dungeons?
+\paragraph{Q:} \hangindent=2em We do not trouble the Holy Family\index{Holy Family} with trivia.
+\paragraph{A:} \hangindent=2em (Laughter) And for this Paul Atreides\index{Paul Atreides} fought his way to a niche among the Fremen\index{Fremen}! For this he learned to control and ride the sandworm! It was a mistake to answer your questions.
+\paragraph{Q:} \hangindent=2em But I will keep my promise to preserve your words.
+\paragraph{A:} \hangindent=2em Will you really? Then listen to me carefully, you Fremen\index{Fremen} degenerate, you Priest with no god except yourself! You have much to answer for. It was a Fremen\index{Fremen} ritual which gave Paul his first massive dose of melange\index{melange}, thereby opening him to visions of his futures. It was a Fremen\index{Fremen} ritual by which that same melange awakened the unborn Alia\index{Alia} in the Lady Jessica\index{Lady Jessica}'s womb. Have you considered what it meant for Alia\index{Alia} to be born into this universe fully cognitive, possessed of all her mother's memories and knowledge? No rape could be more terrifying.
+\paragraph{Q:} \hangindent=2em Without the sacred melange Muad'Dib\index{Muad'Dib} would not have become leader of all Fremen\index{Fremen}. Without her holy experience Alia\index{Alia} would not be Alia\index{Alia}.
+\paragraph{A:} \hangindent=2em Without your blind Fremen\index{Fremen} cruelty you would not be a priest. Ahhh, I know you Fremen\index{Fremen}. You think Muad'Dib\index{Muad'Dib} is yours because he mated with Chani\index{Chani}, because he adopted Fremen\index{Fremen} customs. But he was an Atreides\index{Atreides} first and he was trained by a Bene Gesserit\index{Bene Gesserit} adept. He possessed disciplines totally unknown to you. You thought he brought you new organization and a new mission. He promised to transform your desert planet into a water-rich paradise. And while he dazzled you with such visions, he took your virginity!
+\paragraph{Q:} \hangindent=2em Such heresy does not change the fact that the Ecological Transformation of Dune\index{Ecological Transformation of Dune} proceeds apace.
+\paragraph{A:} \hangindent=2em And I committed the heresy of tracing the roots of that transformation, of exploring the consequences. That battle out there on the Plains of Arrakeen\index{Plains of Arrakeen} may have taught the universe that Fremen\index{Fremen} could defeat Imperial Sardaukar\index{Imperial Sardaukar}, but what else did it teach? When the stellar empire of the Corrino Family\index{Corrino Family} became a Fremen empire\index{Fremen empire} under Muad'Dib\index{Muad'Dib}, what else did the Empire\index{Empire} become? Your Jihad\index{Jihad} only took twelve years, but what a lesson it taught. Now, the Empire\index{Empire} understands the sham of Muad'Dib\index{Muad'Dib}'s marriage to the Princess Irulan\index{Princess Irulan}!
+\paragraph{Q:} \hangindent=2em You dare accuse Muad'Dib\index{Muad'Dib} of sham!
+\paragraph{A:} \hangindent=2em Though you kill me for it, it's not heresy. The Princess\index{The Princess} became his consort, not his mate. Chani\index{Chani}, his little Fremen\index{Fremen} darling---she's his mate. Everyone knows this. Irulan\index{Irulan} was the key to a throne, nothing more.
+\paragraph{Q:} \hangindent=2em It's easy to see why those who conspire against Muad'Dib\index{Muad'Dib} use your Analysis of History\index{Analysis of History} as their rallying argument!
+\paragraph{A:} \hangindent=2em I'll not persuade you; I know that. But the argument of the conspiracy came before my Analysis. Twelve years of Muad'Dib\index{Muad'Dib}'s Jihad\index{Jihad} created the argument. That's what united the ancient power groups and ignited the conspiracy against Muad'Dib\index{Muad'Dib}.
+\begin{adjustwidth}{1.5em}{}\small
+\vspace{10pt}
+--- Excerpts from the death cell interview with Bronso of Ix
+\end{adjustwidth}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Such a rich store of myths enfolds Paul Muad'Dib\index{Paul Muad'Dib}, the Mentat Emperor\index{Mentat Emperor}, and his sister, Alia\index{Alia}, it is difficult to see the real persons behind these veils. But there were, after all, a man born Paul Atreides\index{Paul Atreides} and a woman born Alia\index{Alia}. Their flesh was subject to space and time. And even though their oracular powers placed them beyond the usual limits of time and space, they came from human stock. They experienced real events which left real traces upon a real universe. To understand them, it must be seen that their catastrophe was the catastophe of all mankind. This work is dedicated, then, not to Muad'Dib\index{Muad'Dib} or his sister, but to their heirs---to all of us.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Dedication in the Muad'Dib Concordance\index{Muad'Dib Concordance} as copied from the Tabla Memorium\index{Tabla Memorium} of the Mahdi Spirit Cult\index{Mahdi Spirit Cult}
+\end{adjustwidth}
+}
+\fancybreak{\pfbreakdisplay}
+\setlength{\parindent}{1.5em}
+\phantomsection
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\arabic{chapter}.\arabic{section}~~~ Analysis of History: Muad'Dib}
+Muad'Dib\index{Muad'Dib}'s Imperial reign\index{Imperial reign} generated more historians than any other era in human history. Most of them argued a particular viewpoint, jealous and sectarian, but it says something about the peculiar impact of this man that he aroused such passions on so many diverse worlds.
+
+Of course, he contained the ingredients of history, ideal and idealized. This man, born Paul Atreides\index{Paul Atreides} in an ancient Great Family\index{Great Family}, received the deep prana-bindu training from the Lady Jessica\index{Lady Jessica}, his Bene Gesserit\index{Bene Gesserit} mother, and had through this a superb control over muscles and nerves. But more than that, he was a mentat\index{mentat}, an intellect whose capacities surpassed those of the religiously proscribed mechanical computers used by the ancients.
+
+Above all else, Muad'Dib\index{Muad'Dib} was the kwisatz haderach\index{kwisatz haderach} which the Sisterhood\index{Sisterhood}’s breeding program had sought across thousands of generations.
+
+The kwisatz haderach\index{kwisatz haderach}, then, the one who could be ``many places at once,'' this prophet, this man through whom the Bene Gesserit\index{Bene Gesserit} hoped to control human destiny---this man became Emperor Muad'Dib\index{Emperor Muad'Dib} and executed a marriage of convenience with a daughter of the Padishah Emperor\index{Padishah Emperor} he had defeated.
+
+Think on the paradox, the failure implicit in this moment, for you surely have read other histories and know the surface facts. Muad'Dib\index{Muad'Dib}'s wild Fremen\index{Fremen} did, indeed, overwhelm the Padishah Shaddam IV\index{Padishah Shaddam IV}. They toppled the Sardaukar\index{Sardaukar} legions, the allied forces of the Great Houses\index{Great Houses}, the Harkonnen\index{Harkonnen} armies and the mercenaries bought with money voted in the Landsraad\index{Landsraad}. He brought the Spacing Guild\index{Spacing Guild} to its knees and placed his own sister, Alia\index{Alia}, on the religious throne the Bene Gesserit\index{Bene Gesserit} had thought their own.
+
+He did all these things and more.
+
+Muad'Dib\index{Muad'Dib}'s Qizarate\index{Qizarate} missionaries carried their religious war across space in a Jihad\index{Jihad} whose major impetus endured only twelve standard years, but in that time, religious colonialism brought all but a fraction of the human universe under one rule.
+
+He did this because capture of Arrakis\index{Arrakis}, that planet known more often as Dune\index{Dune}, gave him a monopoly over the ultimate coin of the realm---the geriatric spice, melange\index{melange}, the poison that gave life.
+
+Here was another ingredient of ideal history: a material whose psychic chemistry unraveled Time\index{Time}. Without melange\index{melange}, the Sisterhood\index{Sisterhood}'s Reverend Mothers\index{Reverend Mothers} could not perform their feats of observation and human control. Without melange\index{melange}, the Guild\index{Guild}’s Steersmen\index{Steersmen} could not navigate across space. Without melange\index{melange}, billions upon billions of Imperial citizens\index{Imperial citizens} would die of addictive withdrawal.
+
+Without melange, Paul Muad'Dib\index{Paul Muad'Dib} could not prophesy.
+
+We know this moment of supreme power contained failure. There can be only one answer, that completely accurate and total prediction is lethal.
+
+Other histories say Muad'Dib\index{Muad'Dib} was defeated by obvious plotters---the Guild\index{Guild}, the Sisterhood\index{Sisterhood} and the scientific amoralists of the Bene Tleilax\index{Bene Tleilax} with their Face-Dancer\index{Face-Dancer} disguises. Other histories point out the spies in Muad'Dib\index{Muad'Dib}'s household. They make much of the Dune Tarot\index{Dune Tarot} which clouded Muad'Dib\index{Muad'Dib}'s powers of prophecy. Some show how Muad'Dib\index{Muad'Dib} was made to accept the services of a ghola, the flesh brought back from the dead and trained to destroy him. But certainly they must know this ghola was Duncan Idaho\index{Duncan Idaho}, the Atreides\index{Atreides} lieutenant who perished saving the life of the young Paul\index{Paul}.
+
+Yet, they delineate the Qizarate\index{Qizarate} cabal guided by Korba the Panegyrist\index{Korba the Panegyrist}. They take us step by step through Korba\index{Korba}'s plan to make a martyr of Muad'Dib\index{Muad'Dib} and place the blame on Chani\index{Chani}, the Fremen\index{Fremen} concubine.
+
+How can any of this explain the facts as history has revealed them? They cannot. Only through the lethal nature of prophecy can we understand the failure of such enormous and far-seeing power.
+
+Hopefully, other historians will learn something from this revelation.
+\setlength{\parindent}{0pt}
+\begin{adjustwidth}{1.5em}{}\small
+\vspace{10pt}
+--- ``Analysis of History: Muad'Dib''\index{Analysis of History: Muad'Dib} by Bronso of Ix\index{Bronso of Ix}
+\end{adjustwidth}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There exists no separation between gods and men; one blends softly casual into the other.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Proverbs of Muad'Dib\index{Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Every civilization must contend with an unconscious force which can block, betray or countermand almost any conscious intention of the collectivity.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Tleilaxu Theorem\index{Tleilaxu Theorem} (unproven)
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The advent of the Field Process shield\index{Field Process shield} and the lasgun\index{lasgun} with their explosive interaction, deadly to attacker and attacked, placed the current determinatives on weapons technology. We need not go into the special role of atomics. The fact that any Family in my Empire\index{Empire} could so deploy its atomics as to destroy the planetary bases of fifty or more other Families causes some nervousness, true. But all of us possess precautionary plans for devastating retaliation. Guild\index{Guild} and Landsraad\index{Landsraad} contain the keys which hold this force in check. No, my concern goes to the development of humans as special weapons. Here is a virtually unlimited field which a few powers are developing.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Muad'Dib: Lecture to the War College\index{Muad'Dib: Lecture to the War College}
+
+from The Stilgar Chronicle\index{Stilgar Chronicle}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Empires do not suffer emptiness of purpose at the time of their creation. It is when they have become established that aims are lost and replaced by vague ritual.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Words of Muad'Dib\index{Words of Muad'Dib}
+
+by Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``Once more the drama begins.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Emperor Paul Muad'Dib\index{Emperor Paul Muad'Dib}
+
+on his ascension to the Lion Throne\index{Lion Throne}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Truth suffers from too much analysis.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Ancient Fremen Saying\index{Ancient Fremen Saying}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The Fremen\index{Fremen} see her as the Earth Figure\index{Earth Figure}, a demi-goddess whose special charge is to protect the tribes through her powers of violence. She is Reverend Mother\index{Reverend Mother} to their Reverend Mother\index{Reverend Mother}s. To pilgrims who seek her out with demands that she restore virility or make the barren fruitful, she is a form of antimentat. She feeds on that proff that the ``analytic'' has limits. She represents ultimate tension. She is the virgin-harlot---witty, vulgar, cruel, as destructive in her whims as a coriolis\index{coriolis} storm.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- St. Alia-of-the-Knife\index{St. Alia-of-the-Knife}
+
+as taken from The Irulan Report\index{Irulan Report}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The most dangerous game in the universe is to govern from an oracular base. We do not consider ourselves wise enough or brave enough to play that game. The measures detailed here for regulation in lesser matters are as near as we dare venture to the brink of government. For our purposes, we borrow a definition from the Bene Gesserit\index{Bene Gesserit} and we consider the various worlds as gene pools, sources of teachings and teachers, sources of the possible. Our goal is not to rule, but to tap these gene pools, to learn, and to free ourselves from all restraints imposed by dependency and government.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- ``The Orgy as a Tool of Statecraft\index{Orgy as a Tool of Statecraft},''
+
+Chapter Three of The Steersman's Guild\index{Steersman's Guild}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Here lies a toppled god\index{god}---
+
+His fall was not a small one.
+
+We did but build his pedestal,
+
+A narrow and a tall one.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Tleilaxu Epigram\index{Tleilaxu Epigram}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I think what a joy it is to be alive, and I wonder if I'll ever leap inward to the root of this flesh and know myself as once I was. The root is there. Whether any act of mine can find it, that remains tangled in the future. But all things a man can do are mine. Any act of mine may do it.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Ghola Speaks\index{Ghola Speaks}
+
+Alia's Commentary\index{Alia's Commentary}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``You do not beg the sun for mercy.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Muad'Dib's Travail\index{Muad'Dib's Travail}
+
+from The Stilgar Commentary\index{Stilgar Commentary}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``I've had a bellyful of the god and priest business! You think I don't see my own mythos? Consult your data once more, Hayt\index{Hayt}. I've insinuated my rites into the most elementary human acts. The people in the name of Muad'Dib\index{Muad'Dib}! They make love in my name, are born in my name---cross the street in my name. A roof beam cannot be raised in the lowliest hovel of far Gangishree\index{Gangishree} without invoking the blessing of Muad'Dib\index{Muad'Dib}!''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Book of Diatribes\index{Book of Diatribes}
+
+from the Hayt Chronicle\index{Hayt Chronicle}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Oh, worm of many teeth,
+
+Canst thou deny what has no cure?
+
+The flesh and breath which lure thee
+
+To the ground of all beginnings
+
+Feed on monsters twisting in a door of fire!
+
+Thou hast no robe in all thy attire
+
+To cover intoxications of divinity
+
+Or hide the burnings of desire!
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Wormsong\index{Wormsong}
+
+from the Dunebook\index{Dunebook}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The audacious nature of Muad'Dib\index{Muad'Dib}'s actions may be seen in the fact that He knew from the beginning whither He was bound, yet not once did He step aside from that path. He put it clearly when He said: ``I tell you that I come now to my time of testing when it will be shown that I am the Ultimate Servant\index{Ultimate Servant}.'' Thus He weaves all into One, that both friend and foe may worship Him. It is for this reason and this reason only that His Apostles\index{His Apostles} prayed: ``Lord, save us from the other paths which Muad'Dib\index{Muad'Dib} covered with the Waters of His Life.'' Those ``other paths'' may be imagined only with the deepest revulsion.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from The Yiam-el-Din\index{Yiam-el-Din} (Book of Judgement\index{Book of Judgement})
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+No matter how exotic human civilization becomes, no matter the developments of life and society nor the complexity of the machine/human interface, there always come interludes of lonely power when the course of humankind, the very future of humankind, depends on the relatively simple actions of single individuals.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from The Tleilaxu Godbuk\index{Tleilaxu Godbuk}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Production growth and income growth must not get out of step in my Empire\index{Empire}. That is the substance of my command. There are to be no balance-of-payment difficulties between the different spheres of influence. And the reason for this is simply because I command it. I want to emphasize my authority in this area. I am the supreme energy-eater of this domain, and will remain so, alive or dead. My Government\index{Government} is the economy.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Order in Council\index{Order in Council}
+
+The Emperor Paul Muad'Dib\index{Emperor Paul Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The convoluted wording of legalisms grew up around the necessity to hide from ourselves the violence we intend toward each other. Between depriving a man of one hour from his life and depriving him of his life there exists only a difference of degree. You have done violence to him, consumed his energy. Elaborate euphemisms may conceal your intent to kill, but behind any use of power over another the ultimate assumption remains: ``I feed on your energy.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Addenda to Orders in Council\index{Addenda to Orders in Council}
+
+The Emperor Paul Muad'Dib\index{Emperor Paul Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+He has gone from Alia\index{Alia},
+
+The womb of heaven!
+
+Holy, holy, holy!
+
+Fire-sand leagues
+
+Confront our Lord.
+
+He can see
+
+Without eyes!
+
+A demon upon him!
+
+Holy, holy holy
+
+Equation:
+
+He solved for
+
+Martyrdom!
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Moon Falls Down\index{Moon Falls Down}
+
+Songs of Muad'Dib\index{Songs of Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Tibana\index{Tibana} was an apologist for Socratic Christianity\index{Socratic Christianity}, probably a native of IV Anbus\index{IV Anbus} who lived between the eight and ninth centuries before Corrino\index{Corrino}, likely in the second reign of Dalamak\index{Dalamak}. Of his writings, only a portion survives from which this fragment is taken: ``The hearts of all men dwell in the same wilderness.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from The Dunebuk of Irulan\index{Dunebuk of Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The sequential nature of actual events is not illuminated with lengthy precision by the powers of prescience except under the most extraordinary circumstances. The oracle grasps incidents cut out of the historic chain. Eternity\index{Eternity} moves. It inflicts itself upon the oracle and the supplicant alike. Let Muad'Dib\index{Muad'Dib}'s subjects doubt his majesty and his oracular visions. Let them deny his powers. Let them never doubt Eternity\index{Eternity}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Dune Gospels\index{Dune Gospels}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There exists a limit to the force even the most powerful may apply without destroying themselves. Judging this limit is the true artistry of government. Misuse of power is the fatal sin. The law cannot be a tool of vengeance, never a hostage, nor a fortification against the martyrs it has created. You cannot threaten any individual and escape the consequences.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Muad'Dib on Law\index{Muad'Dib on Law}
+
+The Stilgar Commentary\index{Stilgar Commentary}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There was a man so wise,
+
+He jumped into
+
+A sandy place
+
+And burnt out both his eyes!
+
+And when he knew his eyes were gone,
+
+He offered no complaint.
+
+He summoned up a vision
+
+And made himself a saint.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Children's Verse\index{Children's Verse}
+
+from History of Muad'Dib\index{History of Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We say of Muad'Dib\index{Muad'Dib} that he has gone on a journey into that land where we walk without footprints.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Preamble to the Qizarate Creed\index{Qizarate Creed}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+No bitter stench of funeral-still for Muad'Dib\index{Muad'Dib}.
+
+No knell nor solemn rite to free the mind
+
+From avaricious shadows.
+
+He is the fool saint,
+
+The golden stranger living forever
+
+On the edge of reason.
+
+Let your guard fall and he is there!
+
+His crimson peace and sovereign pallor
+
+Strike into our universe on prophetic webs
+
+To the verge of a quiet place---there!
+
+Out of bristling star-jungles:
+
+Mysterious, lethal, an oracle without eyes,
+
+Catspaw of prophecy, whose voice never dies!
+
+Shai-Hulud\index{Shai-Hulud}, he awaits thee upon a strand
+
+Where couples walk and fix, eye to eye,
+
+The delicious ennui of love.
+
+He strides through the long cavern of time,
+
+Scattering the fool-self of his dream.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Ghola's Hymn\index{Ghola's Hymn}
+\end{adjustwidth}
+}
+
+\chapter{Children of Dune}
+
+\vbox{
+Muad'Dib\index{Muad'Dib}'s teachings have become the playground of scholastics, of the superstitious and the corrupt. He taught a balanced way of life, a philosophy with which a human can meet problems arising from an ever-changing universe. He said humankind is still evolving, in a process which will never end. He said this evolution moves on changing principles which are known only to eternity. How can corrupted reasoning play with such an essence?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Words of the Mentat Duncan Idaho\index{Mentat Duncan Idaho}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+CHALLENGE: ``Have you seen The Preacher\index{The Preacher}?''
+
+RESPONSE: ``I have seen a sandworm.''
+
+CHALLENGE: ``What about that sandworm?''
+
+RESPONSE: ``It gives us the air we breathe.''
+
+CHALLENGE: ``Then why do we destroy its land?''
+
+RESPONSE: ``Because Shai-Hulud\index{Shai-Hulud} [\emph{sandworm defiled}] orders it.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Riddles of Arrakis\index{Riddles of Arrakis} by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The sietch at the desert's rim
+
+Was Liet\index{Liet}'s, was Kynes\index{Kynes}'s,
+
+Was Stilgar\index{Stilgar}'s, was Muad'Dib\index{Muad'Dib}'s
+
+And once more, was Stilgar\index{Stilgar}'s.
+
+The Naibs\index{Naibs} one by one sleep in the sand,
+
+But the sietch endures.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- from a Fremen song\index{Fremen song}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+melange\index{melange} (me'-lange also ma,lanj) n-s, origin uncertain (thought to derive from ancient Terran Franzh\index{Terran Franzh}): a. mixture of spices; b. spice of Arrakis\index{Arrakis} (Dune\index{Dune}) with geriatric properties first noted by Yanshuph Ashkoko\index{Yanshuph Ashkoko}, royal chemist in reign of Shakkad the Wise\index{Shakkad the Wise}; Arrakeen melange\index{Arrakeen melange}, found only in deepest desert sands of Arrakis\index{Arrakis}, linked to prophetic visions of Paul Muad'Dib\index{Paul Muad'Dib} (Atreides\index{Atreides}), first Fremen Mahdi\index{Fremen Mahdi}; also employed by Spacing Guild Navigators\index{Spacing Guild Navigators} and the Bene Gesserit\index{Bene Gesserit}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Dictionary Royal\index{Dictionary Royal} fifth edition
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The Fremen\index{Fremen} must return to his original faith, to his genius in forming human communities; he must return to the past, where that lesson of survival was learned in the struggle with Arrakis\index{Arrakis}. The only business of the Fremen\index{Fremen} should be that of opening his soul to the inner teachings. The worlds of the Imperium\index{Imperium}, the Landsraad\index{Landsraad} and the CHOAM Confederacy\index{CHOAM Confederacy} have no message to give him. They will only rob him of his soul.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Preacher\index{The Preacher} at Arrakeen\index{Arrakeen}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I give you the desert chameleon, whose ability to blend itself into the background tells you all you need to know about the roots of ecology and the foundations of a personal identity.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Book of Diatribes\index{Book of Diatribes}
+
+from the Hayt Chronicle\index{Hayt Chronicle}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The Universe\index{Universe} is God\index{God}'s. It is one thing, a wholeness against which all separations may be identified. Transient life, even that self-aware and reasoning life which we call sentient, holds only fragile trusteeship on any portion of the wholeness.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Commentaries from the C.E.T. (Commission of Ecumenical Translators)\index{Commentaries from the C.E.T. (Commission of Ecumenical Translators)}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+And I beheld another beast coming up out of the sand; and he had two horns like a lamb, but his mouth was fanged and fiery as the dragon and his body shimmered and burned with great heat while it did hiss like the serpent.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Revised Orange Catholic Bible\index{Revised Orange Catholic Bible}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+It is commonly reported, my dear Georad\index{Georad}, that there exists great natural virtue in the melange\index{melange} experience. Perhaps this is true. There remain within me, however, profound doubts that every use of melange always brings virtue. Meseems that certain persons have corrupted the use of melange in defiance of God\index{God}. In the words of the Ecumenon\index{Ecumenon}, they have disfigured the soul. They skim the surface of melange and believe thereby to attain grace. They deride their fellows, do great harms to godliness, and they distort the meaning of this abundant gift maliciously, surely a mutilation beyond the power of man to restore. To be truly at one with the virtue of the spice, uncorrupted in all ways, full of goodly honour, a man must permit his deeds and his words to agree. When your actions describe a system of evil consequences, you should be judged by those consequences and not by your explanations. It is thus that we should judge Muad'Dib\index{Muad'Dib}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Pedant Heresy\index{Pedant Heresy}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Either we abandon the long-horned Theory of Relativity\index{Theory of Relativity}, or we cease to believe that we can engage in continued accurate prediction of the future. Indeed, knowing the future raises a host of questions which cannot be answered under conventional assumptions unless one first projects an Observer outside of Time\index{Observer outside of Time} and, second, nullifies all movement. If you accept the Theory of Relativity\index{Theory of Relativity}, it can be shown that Time and the Observer\index{Time and the Observer} must stand still in relationship to each or inaccuracies will intervene. This would seem to say that it is impossible to engage in accurate prediction of the future. How, then, do we explain the continued seeking after this visionary goal by respected scientists? How, then do we explain Muad'Dib\index{Muad'Dib}?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Lectures on Prescience\index{Lectures on Prescience}
+
+By Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I hear the wind blowing across the desert and I see the moons of a winter night rising like great ships in the void. To them I make my vow: I will be resolute and make an art of government; I will balance my inherited past and become a perfect storehouse of my relic memories. And I will be known for kindliness more than for knowledge. My face will shine down the corridors of time for as long as humans exist.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto's Vow\index{Leto's Vow}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+These are illusions of popular history which a successful religion must promote: Evil men never prosper; only the brave deserve the fair; honesty is the best policy; actions speak louder than words; virtue always triumphs; a good deed is its own reward; any bad human can be reformed; religious talismans protect one from demon possession; only females understand the ancient mysteries; the rich are doomed to unhappiness $\ldots$
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- From the Instruction Manual: Missionaria Protectiva\index{Instruction Manual: Missionaria Protectiva}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+A sophisticated human can become primitive. What this really means is that the human's way of life changes. Old values change, become linked to the landscape with its plants and animals. This new existence requires a working knowledge of those multiplex and cross-linked events usually referred to as \emph{nature}. It requires a measure of respect for the inertial power within such \emph{natural} systems. When a human gains this working knowledge and respect, that is called ``being primitive.'' The converse, of course, is equally true: the primitive can become sophisticated, but not without accepting dreadful psychological damage.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Leto Commentary\index{Leto Commentary}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+This was Muad'Dib\index{Muad'Dib}'s achievement: He saw the subliminal reservoir of each individual as an unconscious bank of memories going back to the primal cell of our common genesis. Each of us, he said, can measure out his distance from that common origin. Seeing this and telling of it, he made the audacious leap of decision. Muad'Dib\index{Muad'Dib} set himself the task of integrating genetic memory into ongoing evaluation. Thus did he break through Time\index{Time}'s veils, making a single thing of the future and the past. That was Muad'Dib\index{Muad'Dib}'s creation embodied in his son and his daughter.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Testament of Arrakis\index{Testament of Arrakis}
+
+by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+And he saw a vision of armour. The armour was not his own skin; it was stronger than plasteel. Nothing penetrated his armour ---not knife or poison or sand, not the dust of the desert or its desiccating heat. In his right hand he carried the power to make the Coriolis\index{Coriolis} storm, to shake the earth and erode it into nothing. His eyes were fixed upon the Golden Path\index{Golden Path} and in his left hand he carried the sceptre of absolute mastery. And beyond the Golden Path\index{Golden Path}, his eyes looked into eternity which he knew to be the food of his soul and of his everlasting flesh.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Heighia, My Brother's Dream\index{Heighia, My Brother's Dream}
+
+from The Book of Ghanima\index{Book of Ghanima}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Atrocity is recognized as such by victim and perpetrator alike, by all who learn about it at whatever remove. Atrocity has no excuses, no mitigating argument. Atrocity never balances or rectifies the past. Atrocity merely arms the future for more atrocity. It is self-perpetuating upon itself---a barbarous form of incest. Whoever commits atrocity also commits those future atrocities thus bred.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Apocrypha of Muad'Dib\index{Apocrypha of Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I will not argue with the Fremen\index{Fremen} claims that they are divinely inspired to transmit a religious revelation. It is their concurrent claim to ideological revelation which inspires me to shower them with derision. Of course, they make the dual claim in the hope that it will strengthen their mandarinate and help them to endure in a universe which finds them increasingly oppressive. It is in the name of all those oppressed people that I warn the Fremen\index{Fremen}: short-term expediency always fails in the long term.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Preacher at Arrakeen\index{Preacher at Arrakeen}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The life of a single human, as the life of a family or an entire people, persists as memory. My people must come to see this as part of their maturing process. They are people as \emph{organism}, and in this persistent memory they store more and more experiences in a subliminal reservoir. Humankind hopes to call upon this material if it is needed for a changing universe. But much that is stored can be lost in that chance play of accident which we call ``fate.'' Much may not be integrated into evolutionary relationships, and thus may not be evaluated and keyed into activity by those ongoing environmental changes which inflict themselves upon flesh. The \emph{species} can forget! This is the special value of the Kwisatz Haderach\index{Kwisatz Haderach} which the Bene Gesserit\index{Bene Gesserit}s never suspected: the Kwisatz Haderach\index{Kwisatz Haderach} cannot forget.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Book of Leto\index{Book of Leto}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+A Fremen\index{Fremen} dies when he is too long from the desert; this we call ``the water sickness.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Stilgar\index{Stilgar}, The Commentaries\index{The Commentaries}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You have loved Caladan\index{Caladan}
+
+And lamented its lost host---
+
+But pain discovers
+
+New lovers cannot erase
+
+Those forever ghost
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Refrain from The Habbanya Lament\index{Habbanya Lament}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The assumption that humans exist within an essentially impermanent universe, taken as an operational precept, demands that the intellect become a totally aware balancing instrument. But the intellect cannot react thus without involving the entire organism. Such an organism may be recognized by its burning, driving behaviour. And thus it is with a society treated as organism. But here we encounter an old inertia. Societies move to the goading of ancient, reactive impulses. They demand permanence. Any attempt to display the universe of impermanence arouses rejection patterns, fear, anger, and despair. Then how do we explain the acceptance of prescience? Simply: the giver of prescient visions, because he speaks of an absolute (permanent) realization, may be greeted with joy by humankind even while predicting the most dire events.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Book of Leto\index{Book of Leto}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Good government never depends upon laws, but upon the personal qualities of those who govern. The machinery of government is always subordinate to the will of those who administer that machinery. The most important element of government, therefore, is the method of choosing leaders.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Law and Governance\index{Law and Governance}
+
+The Spacing Guild Manual\index{Spacing Guild Manual}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+This is the fallacy of power: ultimately it is effective only in an absolute, a limited universe. But the basic lesson of our relativistic universe is that things change. Any power must always meet a greater power. Paul Muad'Dib\index{Paul Muad'Dib} taught this lesson to the Sardaukar\index{Sardaukar} on the Plains of Arrakeen\index{Plains of Arrakeen}. His descendants have yet to learn the lesson for themselves.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Preacher at Arrakeen\index{The Preacher at Arrakeen}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+When I am weaker than you, I ask for freedom because that is according to your principles; when I am stronger than you, I take away your freedom because that is according to my principles.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Words of an ancient philosopher
+
+(Attributed by Harq al-Ada\index{Harq al-Ada} to one Louis Veuillot\index{Louis Veuillot})
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The universe is just \emph{there}; that's the only way a Fedaykin\index{Fedaykin} can view it and remain the master of his senses. The universe neither threatens nor promises. It holds things beyond our sway: the fall of a meteor, the eruption of a spiceblow, growing old and dying. These are the realities of this universe and they must be faced regardless of how you \emph{feel} about them. You cannot fend off such realities with words. They will come at you in their own wordless way and then, then you will understand what is meant by ``life and death.'' Understanding this, you will be filled with joy.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Muad'Dib\index{Muad'Dib} to his Fedaykin\index{Fedaykin}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+It is said of Muad'Dib\index{Muad'Dib} that once when he saw a weed trying to grow between two rocks, he moved one of the rocks. Later, when the weed was seen to be flourishing, he covered it with the remaining rock. ``That was its fate,'' he explained.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Commentaries\index{The Commentaries}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Governments, if they endure, always tend increasingly toward aristocratic forms. No government in history has been known to evade this pattern. And as the aristocracy develops, government tends more and more to act exclusively in the interests of the ruling class---whether that class be hereditary royalty, oligarchs of financial empires, or entrenched bureaucracy.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Politics as Repeat Phenomenon: Bene Gesserit Training Manual\index{Politics as Repeat Phenomenon: Bene Gesserit Training Manual}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+In this age when the means of human transport include devices which can span the deeps of space in transtime, and other devices which can carry men swiftly over virtually impassable planetary surfaces, it seems odd to think of attempting long journeys afoot. Yet this remains a primary means of travel on Arrakis\index{Arrakis}, a fact attributed partly to preference and partly to the brutal treatment which this planet reserves for anything mechanical. In the strictures of Arrakis\index{Arrakis}, human flesh remains the most durable and reliable resource for the Hajj\index{Hajj}. Perhaps it is the implicit awareness of this fact which makes Arrakis\index{Arrakis} the ultimate mirror of the soul.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Handbook of the Hajj\index{Handbook of the Hajj}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+In all major socializing forces you will find an underlying movement to gain and maintain power through the use of words. from witch doctor to priest to bureaucrat it is all the same. A governed populace must be conditioned to accept power-words as actual things, to confuse the symbolized system with the tangible universe. In the maintenance of such a power structure, certain symbols re kept out of the reach of common understanding---symbols such as those dealing with economic manipulation or those which define the local interpretation of sanity. Symbol-secrecy of this form leads to the development of fragmented sub-languages, each being a signal that its users are accumulating some form of power. With this insight into  a power process, our Imperial Security Force\index{Imperial Security Force} must be ever alert to the formation of sub-languages.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Lecture to the Arrakeen War College\index{Lecture to the Arrakeen War College}
+
+by The Princess Irulan\index{Princess Irulan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The password was given to me by a man who died in the dungeons of Arrakeen\index{Arrakeen}. You see, that is where I got this ring in the shape of a tortoise. It was in the \emph{suk} outside the city where I was hidden by the rebels. The password? Oh, that has been changed many times since then. It was ``Persistence.'' And the countersign was ``Tortoise.'' I got me out of there alive. That's why I bought this ring: a reminder.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Tagir Mohandis: Conversations with a Friend\index{Tagir Mohandis: Conversations with a Friend}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I saw his blood and a piece of his robe which had been ripped by sharp claws. His sister reports vividly of the tigers, the sureness of their attack. We have questioned one of the plotters, and others are dead or in custody. Everything points to a Corrino Plot\index{Corrino Plot}. A Truthsayer\index{Truthsayer} has attested to the testimony.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Stilgar's Report\index{Stilgar's Report} 
+
+to the Landsraad Commission\index{Landsraad Commission}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Above all else, the mentat\index{mentat} must be a generalist, not a specialist. It is wise to have decisions of great moment monitored by generalists. Experts and specialists lead you quickly into chaos. They are a source of useless nit-picking, the ferocious quibble over a comma. The mentat-generalist\index{mentat-generalist}, on the other hand, should bring to decision-making a healthy common sense. He must not cut himself off from the broad sweep of what is happening in his universe. He must remain capable of saying: ``There's no real mystery about this at the moment. This is what we want now. It may prove wrong later, but we'll correct that when we come to it.'' The mentat-generalist must understand that anything which we can identify as our universe is merely part of larger phenomena. But the expert looks backward; he looks into the narrow standards of his own specialty. The generalist looks outward; he looks for living principles, knowing full well that such principles change, that they develop. It is to the characteristics of change itself that the mentat-generalist must look. There can be no permanent catalogue of such change, no handbook or manual. You must look at it with as few preconceptions as possible, asking yourself: ``Now what is this thing doing?''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Mentat Handbook\index{Mentat Handbook}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The one-eyed view of our universe says you must not look far afield for problems. Such problems may never arrive. Instead, tend to the wolf within your fences. The packs ranging outside may not even exist.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Azhar Book\index{Azhar Book}; Shamra I:4\index{Shamra I:4}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Only in the realm of mathematics can you understand Muad'Dib\index{Muad'Dib}'s precise view of the future. Thus: first, we postulate any number of point-dimensions in space. (This is the classic \emph{n}-fold extended aggregate of \emph{n} dimensions.) With this frame work, Time\index{Time} as commonly understood becomes an aggregate of one-dimensional properties. Applying this to the Muad'Dib phenomenon, we find that we either are confronted by new properties of Time or (by reduction through the infinity calculus) we are dealing with separate systems which contain \emph{n} body properties. For Muad'Dib, we assume the latter. As demonstrated by the reduction, the point dimensions of the \emph{n}-fold can only have separate existence within different frameworks of Time. Separate dimensions of Time are thus demonstrated to coexist. This being the inescapable case, Muad'Dib's predictions required that he perceive the \emph{n}-fold not as extended aggregate but as an operation within a single framework. In effect, he froze his universe into that one framework which was his view of Time.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Palimbasha: Lectures at Sietch Tabr\index{Palimbasha: Lectures at Sietch Tabr}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We can still remember the golden days before Heisenberg\index{Heisenberg}, who showed humans the walls enclosing our predestined arguments. The lives within me find this amusing. Knowledge, you see, has no uses without purpose, but purpose is what builds enclosing walls.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto Atreides II\index{Leto Atreides II}
+
+His Voice\index{His Voice}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+If you believe certain words, you believe their hidden arguments. When you believe something is right or wrong, true or false, you believe the assumptions in the words which express the arguments. Such assumptions are often full of holes, but remain most precious to the convinced.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Open-Ended Proff\index{Open-Ended Proff}
+
+from The Panoplia Prophetica\index{Panoplia Prophetica}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Because of the one-pointed Time\index{Time} awareness in which the conventional mind remains immersed, humans tend to think of everything in a sequential, word-oriented framework. This mental trap produces very short-term concepts of effectiveness and consequences, a condition of constant, unplanned response to crises.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Liet-Kynes\index{Liet-Kynes}
+
+The Arrakis Workbook\index{Arrakis Workbook}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You will learn the integrated communication methods as you complete the next step in your mental education. This is a gestalten function which will overlay data paths in your awareness, resolving complexities and masses of input from the mentat index-catalogue techniques which you already have mastered. Your initial problem will be the breaking tensions arising from the divergent assembly of minutiae/data on specialized subjects. Be warned. Without mantat overlay integration, you can be immersed in the Babel Problem\index{Babel Problem}, which is the label we give to the omnipresent dangers of achieving wrong combinations from accurate information.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Mentat Handbook\index{Mentat Handbook}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+O Paul\index{Paul}, thou Muad'Dib\index{Muad'Dib},
+
+Mahdi\index{Mahdi} of all men,
+
+Thy breath exhaled
+
+Sent forth the huricen.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Songs of Muad'Dib\index{Songs of Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Many forces sought control of the Atreides twins\index{Atreides twins} and, when the death of Leto\index{Leto} was announced, this movement of plot and counterplot was amplified. Note the relative motivations: the Sisterhood\index{Sisterhood} feared Alia\index{Alia}, an adult Abomination\index{Abomination}, but still wanted those genetic characteristics carried by the Atreides\index{Atreides}. The Church hierarchy of Auquaf\index{Auquaf} and Hajj\index{Hajj} saw only the power implicit in control of Muad'Dib\index{Muad'Dib}'s heir. CHOAM\index{CHOAM} wanted a doorway to the wealth of Dune\index{Dune}. Farad'n\index{Farad'n} and his Sardaukar\index{Sardaukar} sought a return to glory for House Corrino\index{House Corrino}. The Spacing Guild\index{Spacing Guild} feared the equation Arrakis\index{Arrakis} $=$ melange\index{melange}; without the spice they could not navigate. Jessica\index{Jessica} wished to repair what her disobedience to the Bene Gesserit\index{Bene Gesserit} had created. Few thought to ask the twins what their plans might be, until it was too late.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Book of Kreos\index{Book of Kreos}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There is no guilt or innocence in you. All of that is past. Guilt belabours the dead and I am not the Iron Hammer\index{Iron Hammer}. You multitude of the dead are merely people who have done certain things, and the memory of those things illuminates my path.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II to His Memory-Lives\index{Leto II to His Memory-Lives}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Humankind periodically goes through a speedup of its affairs, thereby experiencing the race between the renewable vitality of the living and the beckoning vitiation of decadence. In this periodic race, any pause becomes luxury. Only then can one reflect that all is permitted; all is possible.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Apocrypha of Muad'Dib\index{Apocrypha of Muad'Dib}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Natural selection has been described as an environment selectively screening for those who will have progeny. Where humans are concerned, though, this is an extremely limiting viewpoint. Reproduction by sex tends toward experiment and innovation. It raises many questions, including the ancient one about whether environment is a selective agent after the variation occurs, or whether environment plays a pre-selective role in determining the variations which it screens. Dune\index{Dune} did not really answer those questions: it merely raised new questions which Leto\index{Leto} and the Sisterhood\index{Sisterhood} may attempt to answer over the next five hundred generations.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Dune Catastrophe\index{Dune Catastrophe}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+One small bird has called thee
+
+From a beak streaked crimson.
+
+It cried once over Sietch Tabr\index{Sietch Tabr}
+
+And thou went forth unto Funeral Plain\index{Funeral Plain}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Lament for Leto II\index{Lament for Leto II}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Peace demands solutions, but we never reach living solutions; we only work toward them. A fixed solution is, by definition, a dead solution. The trouble with peace is that it tends to punish mistakes instead of rewarding brilliance.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Words of My Father: an account of Muad'Dib\index{Words of My Father: an account of Muad'Dib}
+
+reconstructed by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+This rocky shrine to the skull of a ruler grants no prayers. It has become the grave of lamentations. Only the wind hears the voice of this place. The cries of night creatures and the passing wonder of two moons, all say his day has ended. No more supplicants come. The visitors have gone from the feast. How bare the pathway down this mountain.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Lines at Shrine of an Atreides Duke\index{Lines at Shrine of an Atreides Duke} 
+
+Anon\index{Anon}.
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There exist obvious higher-order influences in any planetary system. This is often demonstrated by introducing terraform life onto newly discovered planets. In all such cases, the life in similar zones develops striking similarities of adaptive form. This form signifies much more than shape; it connotes a survival organization and a relationship of such organizations. The human quest for this interdependent order and our niche within it represents a profound necessity. The quest can, however, be perverted into a conservative grip on sameness. This has always proved deadly for the entire system.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Dune Catastrophe\index{Dune Catastrophe}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What you of the CHOAM\index{CHOAM} directorate seem unable to understand is that you seldom find real loyalties in commerce. When did you last hear of a clerk giving his life for the company? Perhaps your deficiency rests in the false assumption that you can order men to think and cooperate. This has been a failure of everything from religions to general staffs throughout history. General staffs have a long record of destroying their own nations. As to religions, I recommend a rereading of Thomas Aquinas\index{Thomas Aquinas}. As to you of CHOAM\index{CHOAM}, what nonsense you believe! Men must want to do things out of their own innermost drives. People, not commercial organizations or chains of command, are what make great civilizations work. Every civilization depends on the quality of the individuals it produces. If you over-organize humans, over-legalize them, suppress their urge to greatness---they cannot work and their civilization collapses.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- A letter to CHOAM\index{A letter to CHOAM}
+
+Attributed to The Preacher\index{The Preacher}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The future of prescience cannot always be locked into the rules of the past. The threads of existence tangle according to many unknown laws. Prescient future insists on its own rules. It will not conform to the ordering of the Zensunni\index{Zensunni} nor to the ordering of science. Prescience builds a relative integrity. It demands the work of this instant, always warning that you cannot weave every thread into the fabric of the past.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Kalima: The Words of Muad'Dib\index{Kalima: The Words of Muad'Dib}
+
+The Shuloch Commentary\index{Shuloch Commentary}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Fremen\index{Fremen} speech implies great concision, a precise sense of expression. It is immersed in the illusion of absolutes. Its assumptions are a fertile ground for absolutist religions. Furthermore, Fremen\index{Fremen} are fond of moralizing. They confront the terrifying instability of all things with institutionalized statements. They say: ``We know there is no \emph{summa} of all attainable knowledge; that is the preserve of God\index{God}. But whatever men can learn, men can contain.'' Out of this knife-edged approach to the universe they carve a fantastic belief in signs and omens and in their own destiny. This is an origin of their Kralizec\index{Kralizec} legend: the war at the end of the universe.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Private Reports/folio 800881\index{Bene Gesserit Private Reports/folio 800881}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The spirit of Muad'Dib\index{Muad'Dib} is more than words, more than the letter of the Law which arises in his name. Muad'Dib\index{Muad'Dib} must always be that inner outrage against the complacently powerful, against the charlatans and the dogmatic fanatics. It is that inner outrage which must have its say because Muad'Dib\index{Muad'Dib} taught us one thing above all others: that humans can endure only in a fraternity of social justice.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Fedaykin Compact\index{Fedaykin Compact}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Limits of survival are set by climate, those long drifts of change which a generation may fail to notice. And it is the extremes of climate which set the pattern. Lonely, finite humans may observe climatic provinces, fluctuations of annual weather and, occasionally may observe such things as ``This is a colder year than I've ever known.'' Such things are sensible. But humans are seldom alerted to the shifting average through a great span of years. And it is precisely in this alerting that humans learn how to survive on any planet. They must learn climate.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Arrakis, the Transformation\index{Arrakis, the Transformation}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Thou didst divide the sand by thy strength; Thou breakest the heads of the dragons in the desert. Yea, I behold thee as a beast coming up from the dunes; thou hast the two horns of the lamb, but thou speakest as the dragon.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Revised Orange Catholic Bible\index{Revised Orange Catholic Bible}
+
+Arran II:4\index{Arran II:4}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Fremen\index{Fremen} were the first humans to develop a conscious/unconscious symbology through which to experience the movements and relationships of their planetary system. They were the first people anywhere to express climate in terms of a semi-mathematic language whose written symbols embody (and internalize) the external relationships. The language itself was part of the system it described. Its written form carried the shape of what it described. The intimate local knowledge of what was available to support life was implicit in this development. One can measure the extent of this language/system interaction by the fact that Fremen\index{Fremen} accepted themselves as foraging and browsing animals.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Story of Liet-Kynes\index{Story of Liet-Kynes}
+
+by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+After the Fremen\index{Fremen}, all Planetologists\index{Planetologists} see life as expressions of energy and look for the overriding relationships. In small pieces, bits and parcels grow into general understanding, the Fremen\index{Fremen} racial wisdom is translated into a new certainty. The thing Fremen\index{Fremen} have as a people, any people can have. They need but develop a sense for energy relationships. They need but observe that energy soaks up the patterns of things and builds with those patterns.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Arrakeen Catastrophe\index{Arrakeen Catastrophe}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Any path which narrows future possibilities may become a lethal trap. Humans are not threading their way through a maze; they scan a vast horizon filled with unique opportunities. The narrowing viewpoint of the maze should appeal only to creatures with their noses buried in sand. Sexually produced uniqueness and differences are the life-protection of the species.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Spacing Guild Handbook\index{Spacing Guild Handbook}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+By these acts Leto II\index{Leto II} removed himself from the evolutionary succession. He did it with a deliberate cutting action, saying: ``To be independent is to be removed.'' Both twins saw beyond the needs of memory as a measuring process, that is, a way of determining their distance from their human origins. But it was left to Leto II\index{Leto II} to do the audacious thing, recognizing that a real creation is independent of its  creator. He refused to reenact the evolutionary sequence, saying, ``That, too, takes me farther and farther from humanity.'' He saw the implications in this: that there can be no truly closed systems in life.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Holy Metamorphosis\index{Holy Metamorphosis}
+
+by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Muad'Dib\index{Muad'Dib} was disinherited and he spoke for the disinherited of all time. He cried out against that profound injustice which alienates the individual from that which he was taught to believe, from that which seemed to come to him as a right.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Mahdinate, An Analysis\index{The Mahdinate, An Analysis}
+
+by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Church and State, scientific reason and faith, the individual and his community, even progress and tradition---all of these can be reconciled in the teachings of Muad'Dib\index{Muad'Dib}. He taught us that there exist no intransigent opposites except in the beliefs of men. Anyone can rip aside the veil of Time\index{Time}. You can discover the future in the past or in your own imagination. Doing this, you win back your consciousness in your inner being. You know then that the universe is a coherent whole and you are indivisible from it.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Preacher at Arrakeen\index{The Preacher at Arrakeen}
+
+After Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Muad'Dib\index{Muad'Dib} gave us a particular kind of knowledge about prophetic insight and its influence upon events which are seen to be ``on line.'' (That is, events which are set to occur in a related system which the prophet reveals and interprets.) As has been noted elsewhere, such insight operates as a peculiar trap for the prophet himself. He can become the victim of what he knows---which is a relatively common human failing. The danger is that those who predict real events may overlook the polarizing effect brought about by overindulgence in their own truth. They tend to forget that nothing in a polarized universe can exist without its opposite being present.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Prescient Vision\index{Prescient Vision}
+
+by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The child who refuses to travel in the father's harness, this is the symbol of man's most unique capability. ``I do not have to be what my father was. I do not have to obey my father's rules or even believe everything he believed. It is my strength as a human that I can make my own choices of what to believe and what not to believe, of what to be and what not to be.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto Atreides II\index{Leto Atreides II}
+
+The Harq al-Ada Biography\index{Harq al-Ada Biography}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The assumption that a whole system can be made to work better through an assault on its conscious elements betrays a dangerous ignorance. This has often been the ignorant approach of those who call themselves scientists and technologists.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Butlerian Jihad\index{Butlerian Jihad}
+
+by Harq al-Ada\index{Harq al-Ada}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+As with so many other religions, Muad'Dib\index{Muad'Dib}'s Golden Elixir of Life\index{Golden Elixir of Life} degenerated into external wizardry. Its mystical signs became mere symbols for deeper psychological processes, and those processes, of course, ran wild. What they needed was a living god, and they didn't have one, a situation which Muad'Dib\index{Muad'Dib}'s son has corrected.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Saying attributed to Lu Tung-pin\index{Lu Tung-pin}
+
+(Lu, The Guest of the Cavern\index{Guest of the Cavern})
+\end{adjustwidth}
+}
+
+\chapter{God Emperor of Dune}
+
+\vbox{
+This morning I was born in a yurt at the edge of a horse-plain in a land of a planet which no longer exists. Tomorrow I will be born someone else in another place. I have not yet chosen. This morning, though---ahhh, this life! When my eyes had learned to focus, I looked out at sunshine on trampled grass and I saw vigorous people going about the sweet activities of their lives. Where $\ldots$ oh where has all of that vigour gone?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I am the most ardent people-watcher who ever lived. I watch them inside me and outside. Past and present can mingle with odd impositions in me. And as the metamorphosis continues in my flesh wonderful things happen to my senses. It's as though I sensed everything in close-up. I have extremely acute hearing and vision, plus a sense of smell extraordinarily discriminating. I can detect and identify pheromones at three parts per million. I know. I have tested it. You cannot hide very much from my senses. I think it would horrify you what I can detect by smell alone. Your pheromones tell me what you are doing or are prepared to do. And gesture and posture! I stared for half a day once at an old man sitting on a bench in Arrakeen\index{Arrakeen}. He was a fifth-generation descendant of Stilgar the Naib\index{Stilgar the Naib} and did not even know it. I studied the angle of his neck, the skin flaps below his chin, the cracked lips and moistness about his nostrils, the pores behind his ears, the wisps of grey hair which crept from beneath the hood of his antique stillsuit. Not once did he detect that he was being watched. Hah! Stilgar\index{Stilgar} would have known it in a second or two. But this old man was just waiting for someone who never came. He got up finally and tottered off. He was very stiff after all of that sitting. I knew I would never see him in the flesh again. He was that near death and his water was sure to be wasted. Well, that no longer mattered.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Oh, the landscapes I have seen! And the people! The far wanderings of the Fremen\index{Fremen} and all the rest of it. Even back through the myths to Terra\index{Terra}. Oh, the lessons in astronomy and intrigue, the migrations, the dishevelled flights, the leg-aching and lung-aching runs through so many nights on all of those cosmic specs where we have defended our transient possession. I tell you we are a marvel and my memories leave no doubt of this.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Sometimes I indulge myself in safaris which no other being may take. I strike inward along the axis of my memories. Like a schoolchild reporting on a vacation trip, I take up my subject. Let it be $\ldots$ female intellectuals! I course backward into the ocean which is my ancestors. I am a great winged fish in the depths. The mouth of my awareness opens and I scoop them up! Sometimes $\ldots$ sometimes I hunt out specific persons recorded in our histories. What a private joy to relive the life of such a one while I mock the academic pretensions which supposedly formed a biography.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You, the first person to encounter my chronicles for at least four thousand years, beware. Do not feel honoured by your primacy in reading the revelations of my Ixian storehouse\index{Ixian storehouse}. You will find much pain in it. Other than the few glimpses required to assure me that the Golden Path\index{Golden Path} continued, I never wanted to peer beyond those four millennia. Therefore, I am not sure what the events in my journals may signify to your times. I only know that my journals have suffered oblivion and that the events which I recount have undoubtedly been submitted to historical distortion for eons. I assure you that the ability to view our futures can become a bore. Even to be thought of as a god\index{god}, as I certainly was, can become ultimately boring. It has occurred to me more than once that holy boredom is good and sufficient reason for the invention of free will.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Inscription on the storehouse at Dar-es-Balat\index{Inscription on the storehouse at Dar-es-Balat}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Enemies strengthen you.
+
+Allies weaken.
+
+I tell you this in the hope that it will help you understand why I act as I do in the full knowledge that great forces accumulate in my Empire with but one wish---the wish to destroy me. You who read these words may know full well what actually happened, but I doubt that you understand it.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Some say I have no conscience. How false they are, even to themselves. I am the only conscience which has ever existed. As wine retains the perfume of its cask, I retain the essence of my most ancient genesis, and that is the seed of conscience. That is what makes me holy. I am God\index{God} because I am the only one who really knows his heredity!
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You must remember that I have at my internal demand every expertise known to our history. This is the fund of energy I draw upon when I address the mentality of war. If you have not heard the moaning cries of the wounded and the dying, you do not know about war. I have heard those cries in such numbers that they haunt me. I have cried out myself in the aftermath of battle. I have suffered wounds in every epoch---wounds from fist and club and rock, from shell-studded limb and bronze sword, from the mace and the cannon, from arrows and lasguns and the silent smothering of atomic dust, from biological invasions which blacken the tongue and drown the lungs, from the swift gush of flame and the silent working of slow poisons $\ldots$ and more I will not recount! I have seen and felt them all. To those who dare ask why I behave as I do, I say: With my memories, I can do nothing else. I am not a coward and once I was human.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Your Lord knows very well what is in your heart. Your soul suffices this day as a rekoner against you. I need no witnesses. You do not listen to your soul, but listen instead to your anger and your rage.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Lord Leto to a Penitent\index{Lord Leto to a Penitent},
+
+From the Oral History\index{Oral History}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Odd as it may seem, great struggles such as the one you can see emerging from my journals are not always visible to the participants. Much depends on what people dream in the secrecy of their hearts. I have always been as concerned with the shaping of dreams as with the shaping of actions. Between the lines of my journals is the struggle with humankind's view of itself---a sweaty contest on a field where motives from our darkest past can well up out of an unconscious reservoir and become events with which we not only must live but contend. It is the hydra-headed monster which always attacks from your blind side. I pray, therefore, that when you have traversed my portion of the Golden Path\index{Golden Path} you no longer will be innocent children dancing to music you cannot hear.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The Duncans\index{The Duncans} always think it odd that I choose women for combat forces, but my Fish Speakers\index{Fish Speakers} are a temporary army in every sense. While they can be violent and vicious, women are profoundly different from men in their dedication to battle. The cradle of genesis ultimately predisposes them to behavior more protective of life. They have proved to be the best keepers of the Golden Path\index{Golden Path}. I reinforce this in my design for their training. They are set aside for a time from ordinary routines. I give them special sharings which they can look back upon with pleasure for the rest of their lives. They come of age in the company of their sisters in preparation for events more profound. What you share in such companionship always prepares you for greater things. The haze of nostalgia covers their days among their sisters, making those days into something different than they were. That's the way today changes history. All contemporaries do not inhabit the same time. The past is always changing, but few realize it.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I know the evil of my ancestors because I am those people. The balance is delicate in the extreme. I know that few of; you who read my words have ever thought about your ancestors this way. It has not occurred to you that your ancestors were survivors and that the survival itself sometimes involved savage decisions, a kind of wanton brutality which civilized humankind works very hard to suppress. What price will you pay for that suppression? Will you accept your won extinction?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What is the most profound difference between us, between you and me? You already know it. It's these ancestral memories. Mine come at me in the full glare of awareness. Yours work from your blind side. Some call it instinct or fate. The memories apply their leverages to each of us---on what we think and what we do. You think you are immune to such influences? I am Galileo\index{Galileo}. I stand here and tell you: ``Yet it moves.'' That which moves can exert its force in ways no mortal power ever before dared stem. I am here to dare this.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The female sense of sharing originated as familial sharing---care of the young, the gathering and preparation of food, sharing joys, love and sorrows. Funeral lamentation originated with women. Religion began as a female monopoly, wrested from them only after its social power became too dominant. Women were the first medical researchers and practitioners. There has never been any clear balance between the sexes because power goes with certain roles as it certainly goes with knowledge.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Unceasing warfare gives rise to its own social conditions which have been similar in all epochs. People enter a permanent state of alertness to ward off attacks. You see the absolute rule of the autocrat. All new things become dangerous frontier districts---new planets, new economic areas to exploit, new ideas or new devices, visitors---everything suspect. Feudalism takes firm hold, sometimes disguised as a polit-bureau or similar structure, but always present. Hereditary succession follows the lines of power. The blood of the powerful dominates. The vice regents of heaven or their equivalent apportion the wealth. And they know they must control inheritance or slowly let the power melt away. Now, do you understand Leto's Peace\index{Leto's Peace}?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Over here sand blows; over there sand blows.
+
+Over there a rich man waits; over here I wait.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Voice of Shai-Hulud\index{Voice of Shai-Hulud},
+
+From the Oral History\index{Oral History}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Our ancestor, Assur-nasir-apli\index{Assur-nasir-apli}, who was known as the cruellest of the cruel, seized the throne by slaying his own father and starting the reign of the sword. His conquests included the Urumia Lake\index{Urumia Lake} region, which led him to Commagene\index{Commagene} and Khabur\index{Khabur}. His son received tribute from the Shuites\index{the Shuites}, from Tyre\index{Tyre}, Sidon\index{Sidon}, Gebel\index{Gebel} and even from Jehu\index{Jehu}, son of Omri\index{Omri}, whose very name struck terror into thousands. The conquests which began with Assur-nasir-apli\index{Assur-nasir-apli} carried arms into Media\index{Media} and later into Israel\index{Israel}, Damascus\index{Damascus}, Edom\index{Edom}, Arpad\index{Arpad}, Babylon\index{Babylon} and Umlias\index{Umlias}. Does anyone remember these names and places now? I have given you enough clues: Try to name the planet.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I am beginning to hate water. The sandtrout skin which impels my metamorphosis has learned the sensitivities of the worm. Moneo\index{Moneo} and many of my guards know my aversion. Only Moneo\index{Moneo} suspects the truth, that this marks an important waypoint. I can feel my ending in it, not soon as Moneo\index{Moneo} measures time, but soon enough as I endure it. Sandtrout swarmed to water in the Dune\index{Dune} days, a problem during the early stages of our symbiosis. The enforcement of my will-power controlled the urge then, and until we reached a time of balance. Now, I must avoid water because there are no other sandtrout, only the half-dormant creatures of my skin. Without sandtrout to bring this world back to desert, Shai-Hulud\index{Shai-Hulud} will not emerge; the sandworm cannot evolve until the land is parched. I am their only hope.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``Another Festival so soon?'' the Lord Leto\index{Lord Leto} asked
+
+``It has been ten years,'' the majordomo said.
+
+Do you think by this exchange that the Lord Leto\index{Lord Leto} betrays an ignorance of time's passage?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Oral History\index{Oral History}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+From that welter of memories which I can tap at will, patterns emerge. They are like another language which I see so clearly. The social-alarm signals which put societies into the postures of defence/attack are like shouted words to me. As a people, you react against threats to innocence and the peril of the helpless young. Unexplained sounds, visions and smells raise the hackles you have forgotten you possess. When alarmed, you cling to your native language because all the other patterned sounds are strange. You demand acceptable dress because a strange costume is threatening. This is system-feedback at its most primitive level. Your cells remember.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Safaris through ancestral memories teach me many things. The patterns, ahhh, the patterns. Liberal bigots are the ones who trouble me most. I distrust the extremes. Scratch a conservative and you find someone who prefers the past over any future. Scratch a liberal and find a closet aristocrat. It's true! Liberal governments always develop into aristocracies. The bureaucracies betray the true intent of people who form such governments. Right from the first the \emph{little} people who formed the governments which promised to equalize the social burdens found themselves suddenly in the hands of bureaucratic aristocracies. Of course, all bureaucracies follow this pattern, but what a hypocrisy to find this even under a communized banner. Ahhh, well, if patterns teach me anything it's that patterns are repeated. My oppressions, by and large, are no worse than any of the others and, at least, I teach a new lesson.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The trance-state of prophecy is like no other visionary experience. It is not a retreat from the raw exposure of the senses (as are many trance-states) but an immersion in a multitude of new movements. Things move. It is an ultimate pragmatism in the midst of Infinity\index{Infinity}, a demanding consciousness where you come at last into the unbroken awareness that the universe moves of itself. That it changes, that its rules change, that nothing remains permanent or absolute throughout all such movement, that mechanical explanations for anything can work only within precise confinements and, once the walls are broken down, the old explanations shatter and dissolve, blown away by new movements. The things you see in this trance are sobering, often shattering. They demand your utmost effort to remain whole and, even so, you emerge from that state profoundly changed.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+When I set out to lead humankind along my Golden Path\index{Golden Path}, I promised them a lesson their bones would remember. I know a profound pattern which humans deny with their words even while their actions affirm it. They say they seek security and quiet, the condition they call peace. Even as they speak, they create the seeds of turmoil and violence. If they find their quiet security, they squirm in it. How boring they find it. Look at them now. Look at what they do while I record these words. Hah! I give them enduring eons of enforced tranquillity which plods on and on despite their every effort to escape into chaos. Believe me, the memory of Leto's Peace\index{Leto's Peace} shall abide with them forever. They will seed their quiet security thereafter only with extreme caution and steadfast preparation.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+As each day passes, you become increasingly unreal, more alien and remote from what I find myself to be on that new day. I am the only reality and, as you differ from me, you lose reality. The more curious I become, the less curious are those who worship me. Religion suppresses curiosity. What I do subtracts from the worshiper. Thus it is that eventually I will do nothing, giving it all back to frightened people who will find themselves on that day alone and forced to act for themselves.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The problem of leadership is inevitably: Who will play God\index{God}?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Muad'Dib\index{Muad'Dib}, 
+
+From the Oral History\index{Oral History}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I am both father and mother to my people. I have known the ecstasy of birth and the ecstasy of death and I know the patterns that you must learn. Have I not wandered intoxicated through the universe of shapes? Yes! I have seen you outlined in light. That universe which you say you see and feel, that universe is my dream. My energies focus upon it and I am in any realm and every real. Thus, you are born.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I have isolated the city-experience within me and have examined it closely. The idea of a city fascinates me. The formation of a biological community without a function, supportive social community leads to havoc. Whose worlds have become single biological communities without an interrelated social structure and this has always led to ruin. It becomes dramatically instructive under overcrowded conditions. The ghetto is lethal. Psychic stresses of overcrowding create pressures which will erupt. The city is an attempt to manage these forces. The social forms by which cities make the attempt are worth study. Remember that there exists a certain malevolence about the formation of any social order. It is the struggle for existence by an artificial entity. Despotism and slavery hover at the edges. Many injuries occur and, thus, the need for laws. The law develops its own power structure, crating more wounds and new injustices. Such trauma can be healed by cooperation, not by confrontation. The summons to cooperate identifies the healer.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The singular multiplicity of this universe draws my deepest attention. It is a thing of ultimate beauty.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Groups tend to condition their surroundings for group survival When they deviate from this it may be taken as a sign of group sickness. There are many telltale symptoms. I watch the sharing of food. This is a form of communication, and inescapable sign of mutual aid which also contains a deadly signal of dependency. It is interesting that men are the ones who usually tend the landscape today. They are \emph{husband-men}. Once, that was the sole province of women.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+If you know all of your ancestors, you were a personal witness to the events which created the myths and religions of our past. Recognizing this, you must think of my as a myth-maker.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Let there be no doubt that I am the assemblage of our ancestors, the arena in which they exercise my moments. They are my cells and I am their body. This is the \emph{favrashi} of which I speak, the soul, the collective unconscious, the source of archetypes, the repository of all trauma and joy. I am the choice of their awakening. My \emph{samhadi} is their \emph{samhadi}. Their experiences are mine! Their knowledge distilled is my inheritance. Those billions are my one.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``Make no heroes,'' my father said.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Voice of Ghanima\index{Voice of Ghanima},
+
+From the Oral History\index{Oral History}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The prophet is not diverted by illusions of past, present and future. The fixity of language determines such linear distinctions. Prophets hold a key to the lock in a language. The mechanical image remains only an image to them. This is not a mechanical universe. The linear progression of events is imposed by the observer. Cause and effect? That's not it at all. The prophet utters fateful words. You glimpse a thing ``destined to occur''. But the prophetic instant releases something of infinite portent and power. The universe undergoes a ghostly shift. Thus, the wise prophet conceals actuality behind shimmering labels. The uninitiated then believe the prophetic language is ambiguous. The listener distrusts the prophetic messenger. Instinct tells you how the utterance blunts the power of such words. The best prophets lead you up to the curtain and let you peer through for yourself.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The pattern of monarchies and similar systems has a message of value for all political forms. My memories assure me that governments of any kind could profit from this message. Governments can be useful to the governed only so long as inherent tendencies toward tyranny are restrained. Monarchies have some good features beyond their star qualities. They can reduce the size and parasitic nature of the management bureaucracy. They can make speedy decisions when necessary. They fit an ancient human demand for a parental (tribal/feudal) hierarchy where every person knows his place. It is valuable to know your place, even if that place is temporary. If is galling to be held in place against your will. This is why I teach about tyranny in the best possible way---by example. Even though you read these words after a passage of eons, my tyranny will not be forgotten. My Golden Path\index{Golden Path} assures this. Knowing my message, I expect you to be exceedingly careful about the powers you delegate to any government.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You know the myth of the Great Spice Hoard\index{Great Spice Hoard}? Yes, I know about that story, too. A majordomo brought it to me one day to amuse me. The story says there is a hoard of melange, a gigantic hoard, big as a great mountain. The hoard is concealed in the depths of a distant planet. It is not Arrakis\index{Arrakis}, that planet. It is not Dune\index{Dune}. The spice was hidden there long ago, even before the First Empire\index{First Empire} and the Spacing Guild\index{Spacing Guild}. The story says Paul Muad'Dib\index{Paul Muad'Dib} went there and lives yet beside the hoard, kept alive by it, waiting. The majordomo did not understand why the story disturbed me.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Memory has a curious meaning to me, a meaning I have hoped others might share. It continually astonished me how people hide from their ancestral memories, shielding themselves behind a think barrier of mythos. Ohhh, I do not expect them to seek the terrible immediacy of every living moment which I must experience. I can understand that they might not want to be submerged in a mush of petty ancestral details. You have reason to fear that your living moments might be taken over by others. Yet, the meaning is there within those memories. We carry all of our ancestry forward like a living wave, all of the hopes and joys and griefs, the agonies and the exultations of our past. Nothing within those memories remains completely without meaning or influence, not as long as there is a humankind somewhere. We have that bright Infinity\index{Infinity} all around us, that Golden Path\index{Golden Path} of forever to which we can continually pledge our puny but inspired allegiance.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The realization of what I am occurs in the timeless awareness which does not stimulate nor delude. I create a field without self or centre, a field where even death becomes only analogy. I desire no results. I merely permit this field which has no goals nor desires, no perfections nor even visions of achievements. In that field, omnipresent primal awareness is all. It is the light which pours through the windows of my universe.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+One of the most terrible words in any language is \emph{Soldier}. The synonyms parade through our history: yogahnee, trooper, hussar, kareebo, cossack, dernazeef, legionnaire, sardaukar\index{sardaukar}, fish speaker\index{fish speaker} $\ldots$ I know them all. They stand there in the ranks of my memory to remind me: \emph{Always make sure you have the army with you}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Do you know what guerrillas often say? They claim that their rebellions are invulnerable to economic warfare because they have no economy, that they are parasitic on those they would overthrow. The fools merely fail to assess the coin in which they must inevitably pay. The pattern is inexorable in its degenerative failures. You see it repeated in the systems of slavery, of welfare states, of caste-ridden religions, of socializing bureaucracies---in any system which creates and maintains dependencies. Too long a parasite and you cannot exist without a host.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+In the cradle of our past, I lay upon my back in a cave so shallow I could penetrate it only by squirming, not by crawling. There, by the dancing light of a resin torch, I drew upon wells and ceiling the creatures of the hunt and the souls of my people. How illuminating it is to peer backward through a perfect circle at that ancient struggle for the visible moment of the soul. All time vibrates to that call: ``Here I am!'' With a mind informed by artist-giants who come afterwards, I peer at handprints and flowing muscles drawn upon the rock with charcoal and vegetable dyes. How much more we are than mere mechanical events! And my anticivil self demand: ``Why is it that they do not want to leave the cave?''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The Duncans\index{The Duncans} sometimes ask if I understand the exotic ideas of our past? And if I understand them, why can't I explain them? Knowledge, the Duncans\index{the Duncans} believe resides only in particulars. I try to tell them that all words are plastic. Word images begin to distort in the instant of utterance. Ideas embedded in a language require that particular language for expression. This is the very essence of the meaning within the word \emph{exotic}. See how it begins to distort? Translation squirms in the presence of the exotic. The Galach\index{Galach} which I speak here imposes itself. It is an outside frame of reference, a particular system. Dangers lurk in all systems. Systems incorporate the unexamined beliefs of their creators. Adopt a system, accept its beliefs, and you help strengthen the resistance to change. Does it serve any purpose for me to tell the Duncans\index{the Duncans} that there are no languages for some things? Ahhh! But the Duncans\index{the Duncans} believe that all languages are mine.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Given enough time for the generations to evolved, the predator produces particular survival adaptations in its prey which, through the circular operation of feedback, produce changes in the predator which again produce changes in the predator which again change the prey---etcetera, etcetera, etcetera $\ldots$ Many powerful forces do the same thing. You can count religions among such forces.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+It required almost a thousand years before the dust of Dune\index{Dune}'s old planet-wide desert left the atmosphere to be bound up in soil and water. The wind called \emph{sandblaster} has not been seen on Arrakis\index{Arrakis} for some twenty-five hundred years. Twenty billion tons of dust could be carried suspended in the wind of just one of those storms. The sky often had a silvery look to it then. Fremen\index{Fremen} said: ``The desert is a surgeon cutting away the skin to expose what's underneath.'' The planet and the people had layers. You could see them. My Sareer\index{Sareer} is but a weak echo of what was. I must be the \emph{sandblaster} today.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Most civilization is based on cowardice. It's so easy to civilize by teaching cowardice. You water down the standards which would lead to bravery. you restrain the will. You regulate the appetites. You fence in the horizons. You make a law for every movement. You deny the existence of chaos. You teach even the children to breathe slowly. You tame.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What is the most immediate danger to my stewardship? I will tell you. It is a true visionary, a person who has stood in the presence of God\index{God} with the full knowledge of where he stands. Visionary ecstasy releases energies which are like the energies of sex---uncaring for anything except creation. One act of creation can be much like another. Everything depends upon the vision.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You cannot understand history unless you understand its flowings, its currents and the ways leaders move within such forces. A leader tries to perpetuate the conditions which demand his leadership. Thus, the leader requires the \emph{outsider}. I caution you to examine my career with care. I am both leader \emph{and} outsider. Do not make the mistake of assuming that I only created the Church which was the State. That was my function as leader and I had many historical models to use a pattern. For a clue to my role as outsider, look at the arts of my time. The arts are barbaric. The favourite poetry? The Epic\index{The Epic}. The popular dramatic ideal? Heroism. Dances? Wildly abandoned. From Moneo\index{Moneo}'s viewpoint, he is correct in describing this as dangerous. It stimulates the imagination. It makes people feel the lack of that which I have taken from them. What did I take from them? The right to participate in history.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You think power may be the most unstable of all human achievements? Then what of the apparent exceptions to this inherent instability? Some families endure. Very powerful religious bureaucracies have been known to endure. Consider the relationship between faint and power. Are they mutually exclusive when each depends upon the other? The Bene Gesserit\index{Bene Gesserit} have been reasonable secure within the loyal walls of faith for thousands of years. But where has their power gone?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Think of it as plastic memory, this force within you which trends you and your fellows toward tribal forms. This plastic memory seeks to return to its ancient shape, the tribal society. It is all around you---the feudatory, the diocese, the corporation, the platoon, the sports club, the dance troupes, the rebel cell, the planning council, the prayer group $\ldots$ each with its master and servants, its host and parasites. And the swarms of alienating devices (including these very words!) tend eventually to be enlisted in the argument for a return to ``those better times.'' I despair of teaching you other ways. You have square thoughts which resist circles.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What am I eliminating? The bourgeois infatuation with peaceful conservation of the past. This is a binding force, a thing which holds humankind into one vulnerable unit in spite of illusionary separations across parsecs of space. If I can find the scattered bits, others can find them. When you are together, you can share a common catastrophe. You can be exterminated together. Thus, I demonstrate the terrible danger of a gliding, passionless mediocrity, a movement without ambitions or aims. I show you that entire civilizations can do this thing. I give you eons of life which slips gently toward death without fuss or stirring, without even asking 'Why?' I show you the false happiness and the shadow-catastrophe called Leto\index{Leto}, the God Emperor\index{God Emperor}. Now, will you learn the real happiness?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+In all of my universe I have seen no law of \emph{nature}, unchanging and inexorable. This universe presents only changing relationships which are sometimes seen as laws by short-lived awareness. These fleshly sensoria which we call \emph{self} are ephemera withering in the blaze of infinity, fleetingly aware of temporary conditions which confine our activities and change as our activities change. If you must label the \emph{absolute}, use it's proper name: \emph{Temporary}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Stolen Journals\index{Stolen Journals}
+\end{adjustwidth}
+}
+
+\chapter{Heretics of Dune}
+
+\vbox{
+Most discipline is hidden discipline, designed not to liberate but to limit. Do not ask Why? Be cautious with How? Why? leads inexorably to paradox. How? traps you in a universe of cause and effect. Both deny the infinite.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Apocrypha of Arrakis\index{Apocrypha of Arrakis}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Explosions are also compressions of time. Observable changes in the natural universe all are explosive to some degree and from some point of view; otherwise you would not notice them. Smooth Continuity of change, if slowed sufficiently, goes without notice by observers whose time/attention span is too short. Thus, I tell you, I have seen changes you would never have marked.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II\index{Leto II}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The existence of no-ships raises the possibility of destroying entire planets without retaliation. A large object, asteroid or equivalent, may be sent against the planet. Or the people can be set against each other by sexual subversion, and then can be armed to destroy themselves. These Honored Matres\index{Honored Matres} appear to favour this latter technique.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Analysis\index{Bene Gesserit Analysis}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Humans live best when each has his place to stand, when each knows where he belongs in the scheme of things and what he may achieve. Destroy the place and you destroy the person.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Teaching\index{Bene Gesserit Teaching}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Has not religion claimed a patent on creation for all of these millennia?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Tleilaxu Question\index{Tleilaxu Question},
+
+from Muad'Dib Speaks\index{Muad'Dib Speaks}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Some days it's melange\index{melange}; some days it's bitter dirt.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Rakian Aphorism\index{Rakian Aphorism}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The trouble with some kinds of warfare (and be certain the Tyrant\index{the Tyrant} knew this, because it is implicit in his lesson) is that they destroy all moral decency in susceptible types. Warfare of these kinds will dump the destroyed survivors back into an innocent population that is incapable of even imagining what such returned soldiers might do.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Teachings of the Golden Path\index{Teachings of the Golden Path},
+
+Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Ten thousand years since Leto II\index{Leto II} began his metamorphosis from human into the sandworm of Rakis\index{sandworm of Rakis} and historians still argue over his motives. Was he driven by the desire for long life? He lived more than ten times the normal span of three hundred SY, but consider the price he paid. Was it the lure of power? He is called the Tyrant\index{the Tyrant} for good reason, but what did power bring him that a human might want? Was he driven to save humankind from itself? We have only his own words about his Golden Path\index{Golden Path} to answer this and I cannot accept the self-serving records of Dar-es-Balat\index{Dar-es-Balat}. Might there have been other gratifications, which only his experiences would illuminate? Without better evidence the question is moot. We are reduced to saying only that ``He did it!'' The physical fact alone is undeniable.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Metamorphosis of Leto II\index{Metamorphosis of Leto II}
+
+10,000th Anniversary
+
+Peroration\index{Peroration} by Gaus Andaud\index{Gaus Andaud}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Technology, in common with many other activities, tends toward avoidance of risks by investors. Uncertainty is ruled out if possible. Capital investment follows this rule, since people generally prefer the predictable. Few recognize how destructive this can be, how it imposes severe limits on variability and thus makes whole populations fatally vulnerable to the shocking ways our universe can throw the dice.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Assessment of Ix\index{Assessment of Ix},
+
+Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+In my estimation, more misery has been created by reformers than by any other force in human history. Show me someone who says, ``Something must be done!'' and I will show you a head full of vicious intentions that have no other outlet. What we must strive for always! is to find the natural flow and go with it.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Reverend Mother Taraza\index{Reverend Mother Taraza},
+
+Conversational Record,
+
+BG File GSXXMAT9\index{BG File GSXXMAT9}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The Tleilaxu\index{Tleilaxu} secret must be in their sperm. Our tests prove that their sperm does not carry forward in a straight genetic fashion. Gaps occur. Every Tleilaxu\index{Tleilaxu} we have examined has hidden his inner self from us. They are naturally immune to an Ixian Probe\index{Ixian Probe}! Secrecy at the deepest levels, that is their ultimate armour and their ultimate weapon.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Analysis\index{Bene Gesserit Analysis},
+
+Archives Code:
+
+BTXX441WOR\index{BTXX441WOR}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The outer surface of a balloon is always larger than the centre of the damned thing! That's the whole point of the Scattering\index{the Scattering}!
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit\index{Bene Gesserit} response to an Ixian\index{Ixian} suggestion that new investigative probes be sent out among the Lost Ones\index{Lost Ones}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The failure of CHOAM\index{CHOAM}? Quite simple: They ignore the fact that larger commercial powers wait at the edges of their activities, powers that could swallow them the way a slig swallows garbage. This is the true threat of the Scattering\index{the Scattering}---to them and to us all.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Council notes\index{Bene Gesserit Council notes},
+
+Archives \#SXX9OCH\index{Archives \#SXX9OCH}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+At the quantum level our universe can be seen as an indeterminate place, predictable in a statistical way only when you employ large enough numbers. Between that universe and a relatively predictable one where the passage of a single planet can be timed to a picosecond, other forces come into play. For the in-between universe where we find our daily lives, \emph{that which you believe} is a dominant force. Your beliefs order the unfolding of daily events. If enough of us believe, a new thing can be made to exist. Belief structure creates a filter through which chaos is sifted into order.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Analysis of the Tyrant\index{Analysis of the Tyrant},
+
+the Taraza File\index{Taraza File}:
+
+BG Archives
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Life cannot find reasons to sustain it, cannot be a source of decent mutual regard, unless each of us resolves to breathe such qualities into it.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Chenoeh: ``Conversations with Leto II''\index{Chenoeh: ``Conversations with Leto II''}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Law always chooses sides on the basis of enforcement power. Morality and legal niceties have little to do with it when the real question is: Who has the clout?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Council Proceedings\index{Bene Gesserit Council Proceedings}:
+
+Archives \#XOX232\index{Archives \#XOX232}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The basic rule is this: Never support weakness; always support strength.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Bene Gesserit Coda\index{Bene Gesserit Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Nothing surpasses the complexity of the human mind.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II: Dar-es-Balat Records\index{Leto II: Dar-es-Balat Records}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The significant fact is this: No Bene Tleilax\index{Bene Tleilax} female has ever been seen away from the protection of their core planets. (Face Dancer\index{Face Dancer} mules who simulate females do not count in this analysis. They cannot be breeders.) The Tleilaxu\index{Tleilaxu} sequester their females to keep them from our hands. This is our primary deduction. It must also be in the eggs that the Tleilaxu Masters\index{Tleilaxu Masters} conceal their most essential secrets.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Analysis\index{Bene Gesserit Analysis}
+
+Archives \#XOXTM99 $\ldots$ 041\index{Archives \#XOXTM99 $\ldots$ 041}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What social inheritances went outward with the Scattering\index{the Scattering}? We know those times intimately. We know both the mental and physical settings. The Lost Ones\index{Lost Ones} took with them a consciousness confined mostly to manpower and hardware. There was a desperate need for room to expand driven by the myth of Freedom\index{Freedom}. Most had not learned the deeper lesson of the Tyrant\index{the Tyrant}, that violence builds its own limits. The Scattering\index{The Scattering} was wild and random movement interpreted as growth (expansion). It was goaded by a profound fear (often unconscious) of stagnation and death.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Scattering: Bene Gesserit Analysis (Archives)\index{The Scattering: Bene Gesserit Analysis (Archives)}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Liberty\index{Liberty} and Freedom\index{Freedom} are complex concepts. They go back to religious ideas of Free Will\index{Free Will} and are related to the Ruler Mystique\index{Ruler Mystique} implicit in absolute monarchs. Without absolute monarchs patterned after the Old Gods\index{Old Gods} and ruling by the grace of a belief in religious indulgence, Liberty\index{Liberty} and Freedom\index{Freedom} would never have gained their present meaning. These ideals owe their very existence to past examples of oppression. And the forces that maintain such ideas will erode unless renewed by dramatic teaching or new oppressions. This is the most basic key to my life.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto. II\index{Leto. II}, God Emperor of Dune\index{God Emperor of Dune}:
+
+Dar-es-Balat Records\index{Dar-es-Balat Records}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Quite naturally, holders of power wish to suppress wild research. Unrestricted questing after knowledge has a long history of producing unwanted competition. The powerful want a ``safe line of investigations,'' which will develop only those products and ideas that can be controlled and, most important, that will allow the larger part of the benefits to be captured by inside investors. Unfortunately, a random universe full of relative variables does not insure such a ``safe line of investigations.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Assessment of Ix\index{Assessment of Ix},
+
+Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Bureaucracy destroys initiative. There is little that bureaucrats hate more than innovation, especially innovation that produces better results than the old routines. Improvements always make those at the top of the heap look inept. Who enjoys appearing inept?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- A Guide to Trial and Error in Government\index{A Guide to Trial and Error in Government},
+
+Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The long table on the right is set for a banquet of roast desert hare in sauce cepeda. The other dishes, clockwise to the right from the far end of the table, are aplomage sirian, chukka under glass, coffee with melange\index{melange} (note the hawk crest of the Atreides\index{Atreides} on the urn), pot-a-oie and, in the Balut\index{Balut} crystal bottle, sparkling Caladan\index{Caladan} wine. Note the ancient poison detector concealed in the chandelier.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Dar-es-Balat\index{Dar-es-Balat}, Description at a Museum Display\index{Description at a Museum Display}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+People always want something more than immediate joy or that deeper sense called happiness. This is one of the secrets by which we shape the fulfilment of our designs. The something more assumes amplified power with people who cannot give it a name or who (most often the case) do not even suspect its existence. Most people only react unconsciously to such hidden forces. Thus, we have only to call a calculated \emph{something more} into existence, define it and give it shape, then people will follow.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leadership Secrets of the Bene Gesserit\index{Leadership Secrets of the Bene Gesserit}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There was this drylander who was asked which was more important, a literjon of water or a vast pool of water? The drylander thought a moment and then said: ``The literjon is more important. No single person could own a great pool of water. But a literjon you could hide under your cloak and run away with it. No one would know.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Jokes of Ancient Dune\index{Jokes of Ancient Dune},
+
+Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+By your belief in singularities, in granular absolutes, you deny movement, even the movement of evolution! While you cause a granular universe to persist in your awareness, you are blind to movement. When things change, your absolute universe vanishes, no longer accessible to your self-limiting perceptions. The universe has moved beyond you.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- First Draft, Atreides Manifesto\index{First Draft, Atreides Manifesto}
+
+Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We have long known that the objects of our palpable sense experiences can be influenced by choice---both conscious choice and unconscious. This is a demonstrated fact that does not require that we believe some force within us reaches out and touches the universe. I address a pragmatic relationship between belief and what we identify as ``real.'' All of our judgments carry a heavy burden of ancestral beliefs to which we of the Bene Gesserit\index{Bene Gesserit} tend to be more susceptible than most. It is not enough that we are aware of this and guard against it. Alternative interpretations must always receive our attention.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Mother Superior Taraza: Argument in Council\index{Mother Superior Taraza: Argument in Council}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+This is the awe-inspiring universe of magic: There are no atoms, only waves and motions all around. Here, you discard all belief in barriers to understanding. You put aside understanding itself. This universe cannot be seen, cannot be heard, cannot be detected in any way by fixed perceptions. It is the ultimate void where no preordained screens occur upon which forms may be projected. You have only one awareness here---the screen of the magi: Imagination! Here, you learn what it is to be human. You are a creator of order, of beautiful shapes and system, an organizer of chaos.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Atreides Manifesto\index{Atreides Manifesto}, 
+
+Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+This room reconstructs a bit of the desert of Dune\index{Dune}. The sandcrawler directly in front of you dates from the Atreides\index{Atreides} times. Grouped around it, moving clockwise from your left, are a small harvester, a carryall, a primitive spice factory and the other support equipment. All are explained at each station. Note the illuminated quotation above the display: ``FOR THEY SHALL SUCK OF THE ABUNDANCE OF THE SEAS AND OF THE TREASURE IN THE SAND.'' This ancient religious quotation was oft repeated by the famous Gurney Halleck\index{Gurney Halleck}.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Guide Announcement\index{Guide Announcement}, Museum of Dar-es-Balat\index{Museum of Dar-es-Balat}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Our fathers ate manna in the desert,
+
+In the burning place where whirlwinds came.
+
+Lord, save us from that horrible land!
+
+Save us, Oh-h-h-h save us
+
+From that dry and thirsty land.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Songs of Gurney Halleck\index{Songs of Gurney Halleck}, Museum of Dar-es-Balat\index{Museum of Dar-es-Balat}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+All organized religions face a common problem, a tender spot through which we may enter and shift them to our designs: How do they distinguish hubris from revelation?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Missionaria Protectiva\index{Missionaria Protectiva}, the Inner Teachings\index{Inner Teachings}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+I remember friends from wars all but we forgot.
+
+All of them distilled into each wound we caught.
+
+Those wounds are all the painful places where we fought.
+
+Battles better left behind, ones we never sought.
+
+What is it that we spent and what was it we bought?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Songs of the Scattering\index{Songs of the Scattering}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+It is your fate, forgetfulness. All of the old lessons of life, you lose and gain and lose and gain again.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II\index{Leto II}, the Voice of Dar-es-Balat\index{Voice of Dar-es-Balat}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Survival of self, of species, and of environment, these are what drive humans. You can observe how the order of importance changes in a lifetime. What are the things of immediate concern at a given age? Weather? The state of the digestion? Does she (or he) really care? All of those various hungers that flesh can sense and hope to satisfy. What else could possibly matter?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II\index{Leto II} to Hwi Noree\index{Hwi Noree}, His Voice: Dar-es-Balat\index{His Voice: Dar-es-Balat}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There was a man who sat each day looking out through a narrow vertical opening where a single board had been removed from a tall wooden fence. Each day a wild ass of the desert passed outside the fence and across the narrow opening---first the nose, then the head, the forelegs, the long brown back, the hindlegs, and lastly the tail. One day, the man leapt to his feet with the light of discovery in his eyes and he shouted for all who could hear him: ``It is obvious! The nose causes the tail!''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Stories of the Hidden Wisdom\index{Stories of the Hidden Wisdom},
+
+from the Oral History of Rakis\index{Oral History of Rakis}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Historians exercise great power and some of them know it. They recreate the past, changing it to fit their own interpretations. Thus, they change the future as well.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II\index{Leto II}, His Voice\index{His Voice}, from Dar-es-Balat\index{Dar-es-Balat}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+``I must rule with eye and claw---as the hawk among lesser birds.''
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Atreides assertion\index{Atreides assertion} (Ref: BG Archives\index{BG Archives})
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Memory never recaptures reality. Memory reconstructs. All reconstructions change the original, becoming external frames of reference that inevitably fall short.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Mentat Handbook\index{Mentat Handbook}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Concealed behind strong barriers the heart becomes ice.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}, Argument in Council\index{Argument in Council}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+When strangers meet, great allowance should be made for differences in custom and training.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Lady Jessica\index{Lady Jessica}, from ``Wisdom of Arrakis\index{Wisdom of Arrakis}''
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+May you die on Caladan\index{Caladan}!
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Ancient Drinking Toast\index{Ancient Drinking Toast}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The worst potential competition for any organism can come from its own kind. The species consumes necessities. Growth is limited by that necessity which is present in the least amount. The least favourable condition controls the rate of growth. (Law of the Minimum\index{Law of the Minimum})
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- From ``Lessons of Arrakis\index{Lessons of Arrakis}''
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+O you who know what we suffer here, do not forget us in your prayers.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Sign over Arrakeen Landing Field\index{Sign over Arrakeen Landing Field}
+ (Historical Records: Dar-es-Balat\index{Historical Records: Dar-es-Balat})
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The world is for the living. Who are they?
+
+We dared the dark to reach the white and warm.
+
+She was the wind when the wind was in my way.
+
+Alive at noon, I perished in her form.
+
+Who rise from the flesh to spirit know the fall:
+
+The word outleaps the world and light is all.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Theodore Roethke\index{Theodore Roethke} (Historical Quotations: Dar-es-Balat\index{Historical Quotations: Dar-es-Balat})
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Justice? Who asks for justice? We make our own justice. We make it here on Arrakis\index{Arrakis}---win or die. Let us not rail about justice as long as we have arms and the freedom to use them.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto I\index{Leto I}: Bene Gesserit Archives\index{Bene Gesserit Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We are not looking at a new state of matter but at a newly recognized relationship between consciousness and matter, which provides a more penetrating insight into the workings of prescience. The oracle shapes a projected inner universe to produce new external probabilities out of forces that are not understood. There is no need to understand these forces before using them to shape the physical universe. Ancient metal workers had no need to understand the molecular and submolecular complexities of their steel, bronze, copper, gold, and tin. They invented mystical powers to describe the unknown while they continued to operate their forges and wield their hammers.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Mother Superior Taraza\index{Mother Superior Taraza}, Argument in Council\index{Argument in Council}
+\end{adjustwidth}
+}
+
+\chapter{Chapterhouse: Dune}
+
+\vbox{
+Those who would repeat the past must control the teaching of history.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Coda\index{Bene Gesserit Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+When I set out to lead humanity along my Golden Path\index{Golden Path} I promised a lesson their bones would remember. I know a profound pattern humans deny with words even while their actions affirm it. They say they seek security and quiet, conditions they call peace. Even as they speak, they create seeds of turmoil and violence.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II\index{Leto II}, The God Emperor\index{God Emperor}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The person who takes the banal and ordinary and illuminates it in a new way can terrify. We do not want our ideas changed. We feel threatened by such demands. ``I already know the important things!'' we say. Then Changer comes and throws our old ideas away.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Zensufi Master\index{Zensufi Master}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Rules build up fortifications behind which small minds create satrapies. A perilous state of affairs in the best of times, disastrous during crises.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Coda\index{Bene Gesserit Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We tend to become like the worst in those we oppose.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Coda\index{Bene Gesserit Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You cannot know history unless you know how leaders move with its currents. Every leader requires outsiders to perpetuate his leadership. Examine my career: I was leader and outsider. Do not assume I merely created a Church-State\index{Church-State}. That was my function as leader and I copied historical models. Barbaric arts of my time reveal me as outsider. Favourite poetry: epics. Popular dramatic ideal: heroism. Dances: wildly abandoned. Stimulants to make people sense what I took from them. What did I take? The right to choose a role in history.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II\index{Leto II} (The Tyrant\index{The Tyrant})
+
+Vether Bebe Translation\index{Vether Bebe Translation}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+You cannot manipulate a marionette with only one string.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Zensunni Whip\index{Zensunni Whip}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Confine yourself to observing and you always miss the point of your own life. The object can be stated this way: Live the best life you can. Life is a game whose rules you learn if you leap into it and play it to the hilt. Otherwise, you are caught off balance, continually surprised by the shifting play. Non-players often whine and complain that luck always passes them by. They refuse to see that they can create some of their own luck.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+All governments suffer a recurring problem: Power attracts pathological personalities. It is not that power corrupts but that it is magnetic to the corruptible. Such people have a tendency to become drunk on violence, a condition to which they are quickly addicted.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Missionaria Protectiva\index{Missionaria Protectiva},
+
+Text QIV (decto)\index{Text QIV (decto)}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The writing of history is largely a process of diversion. Most historical accounts distract attention from the secret influences behind great events.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Bashar Teg\index{Bashar Teg}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Corruption wears infinite disguises.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Tleilaxu Thu-zen\index{Tleilaxu Thu-zen}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Education is no substitute for intelligence. That elusive quality is defined only in part by puzzle-solving ability. It is in the creation of new puzzles reflecting what your senses report that you round out the definition.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Mentat Text One (decto)\index{Mentat Text One (decto)}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Many things we do naturally become difficult only when we try to make them intellectual subjects. It is possible to know so much about a subject that you become totally ignorant.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Mentat Text Two (dicto)\index{Mentat Text Two (dicto)}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Religion (emulation of adults by the child) encysts past mythologies; guesses, hidden assumptions of trust in the universe, pronouncements made in search of personal power, all mingled with shreds of enlightenment. And always an unspoken commandment: Thou shalt not question! We break that commandment daily in the harnessing of human imagination to our deepest creativity.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Credo\index{Bene Gesserit Credo}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Laws to suppress tend to strengthen what they would prohibit. This is the fine point on which all the legal professions of history have based their job security.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Coda\index{Bene Gesserit Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We do not teach history; we recreate the experience. We follow the chain of consequences---the tracks of the beast in its forest. Look behind our words and you see the broad sweep of social behaviour that no historian has ever touched.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Panoplia Propheticus\index{Bene Gesserit Panoplia Propheticus}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+They say Mother Superior\index{Mother Superior} can disregard nothing---a meaningless aphorism until you grasp its other significance: I am the servant of all my sisters. They watch their servant with critical eyes. I cannot spend too much time on generalities nor on trivia. Mother Superior\index{Mother Superior} must display insightful action else a sense of disquiet penetrates to the farthest corners of our order.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+All states are abstractions.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Octun Politicus\index{Octun Politicus},
+
+BG Archives\index{BG Archives}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Some never participate. Life happens to them. They get by on little more than dumb persistence and resist with anger or violence all things that might lift them out of resentment-filled illusions of security.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Alma Mavis Taraza\index{Alma Mavis Taraza}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+To know a thing well, know it limits. Only when pushed beyond its tolerances will true nature be seen.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Amtal Rule\index{Amtal Rule}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Do not depend only on theory if your life is at stake.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Commentary\index{Bene Gesserit Commentary}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Ready comprehension is often a knee-jerk response and the most dangerous form of \emph{understanding}. It blinks an opaque screen over your ability to learn. The judgmental precedents of law function that way, littering your path with dead ends. Be warned. Understand nothing. All comprehension is temporary.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Mentat Fixe (adacto)\index{Mentat Fixe (adacto)}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Major flaws in government arise from a fear of making radical internal changes even though a need is clearly seen.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Time does not count itself. You have only to look at a circle and this is apparent.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Leto II\index{Leto II} (The Tyrant\index{The Tyrant})
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+A major concept guides the Missionaria Protectiva\index{Missionaria Protectiva}: \emph{Purposeful instruction of the masses}. This is firmly seated in our belief that the aim of argument should be to change the nature of truth. In such matters, we prefer the use of power rather than force.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Coda\index{The Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+The best art imitates life in a compelling way. If it imitates a dream, it must be a dream of life. Otherwise, there is no place where we can connect. Our plugs don't fit.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Uproot your questions from their ground and the dangling roots will be seen. More questions!
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Mentat Zensufi\index{Mentat Zensufi}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Humans are born with a susceptibility to that most persistent and debilitating disease of intellect: self-deception. The best of all possible worlds and the worst get their dramatic colouration from it. As nearly as we can determine, there is no natural immunity. Constant alertness is required.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Coda\index{The Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Give me the judgment of balanced minds in preference to laws every time. Codes and manuals create patterned behaviour. All patterned behaviour tends to go unquestioned, gathering destructive momentum.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+No sweeteners will cloak some forms of bitterness. If it tastes bitter, spit it out. That's what our earliest ancestors did.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Coda\index{The Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Enter no conflict against fanatics unless you can defuse them. Oppose a religion with another religion only if your proffs (miracles) are irrefutable or if you can mesh in a way that the fanatics accept you as god-inspired. This has long been the barrier to science assuming a mantle of divine revelation. Science is so obviously man-made. Fanatics (and many are fanatic on one subject or another) must know where you stand, but more important, must recognize who whispers in your ear.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Missionaria Protectiva\index{Missionaria Protectiva},
+
+Primary Teaching\index{Primary Teaching}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We walk a delicate line, perpetuating Atreides\index{Atreides} (Siona\index{Siona}) genes in our population because that hides us from prescience. We carry the Kwisatz Haderach\index{Kwisatz Haderach} in that bag! Willfulness created Muad'Dib\index{Muad'Dib}. Prophets make predictions come true! Will we ever again dare ignore our Tao sense\index{Tao sense} and cater to a culture that hates chance and begs for prophecy?
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Archival Summary (adixto)\index{Archival Summary (adixto)}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+We witness a passing phase of eternity. Important things happen but some people never notice. Accidents intervene. You are not present at episodes. You depend on reports. And people shutter their minds. What good are reports? History in a news account? Preselected at an editorial conference, digested and excreted by prejudice? Accounts you need seldom come from those who make history. Diaries, memoirs and autobiographies are subjective forms of special pleading. are crammed with such suspect stuff.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Spend energies on those who make you strong. Energy spent on weaklings drags you to doom. (HM rule) Bene Gesserit Commentary: Who judges?\index{Bene Gesserit Commentary: Who judges?}
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Dortjula Record\index{Dortjula Record}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Ish yara al-ahdab hadbat-u. (A hunchback does not see his own hunch. --- Folk Saying.) Bene Gesserit Commentary\index{Bene Gesserit Commentary}: The hunch may be seen with the aid of mirrors but mirrors may show the whole being.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Bashar Teg\index{Bashar Teg}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Religion must be accepted as a source of energy. It can be directed for our purposes, but only within limits that experience reveals. Here is the secret meaning of Free Will.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Missionaria Protectiva\index{Missionaria Protectiva},
+
+Primary Teaching\index{Primary Teaching}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Our household god is this thing we carry forward generation after generation: our message for humankind if it matures. The closest thing we have to a household goddess is a failed Reverend Mother\index{Reverend Mother}---Chenoeh\index{Chenoeh} there in her niche.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+When are the witches to be trusted? Never! The dark side of the magic universe belongs to the Bene Gesserit\index{Bene Gesserit} and we must reject them.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Tylwyth Waff\index{Tylwyth Waff}
+
+Master of Masters\index{Master of Masters}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Seek freedom and become captive of your desires. Seek discipline and find your liberty.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Coda\index{The Coda}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Making workable choices occurs in a crucible of informative mistakes. Thus Intelligence accepts fallibility. And when absolute (infallible) choices are not known, Intelligence takes chances with limited data in an arena where mistakes are not only possible but also necessary.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Ultimately all things are \emph{known} because you want to believe you know.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Zensunni koan\index{Zensunni koan}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Answers grip on the universe. They can appear sensible yet explain nothing.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Zensunni Whip\index{Zensunni Whip}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Battle? There's always a desire for breathing space motivating it somewhere.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Bashar Teg\index{Bashar Teg}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Do not be quick to reveal judgment. Hidden judgment often is more potent. It can guide reactions whose effects are felt only when too late to divert them.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Bene Gesserit Advice to Postulants\index{Bene Gesserit Advice to Postulants}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Looked at one way, the universe is Brownian movement\index{Brownian movement}, nothing predictable at the elemental level. Muad'Dib\index{Muad'Dib} and his Tyrant son\index{Tyrant son} closed the cloud where movement occurred.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Stories from Gammu\index{Stories from Gammu}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+What do Holy Accidents\index{Holy Accidents} teach? Be resilient. Be strong. Be ready for change, for the new. Gather many experiences and judge them by the steadfast nature of our faith.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Tleilaxu Doctrine\index{Tleilaxu Doctrine}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+When you think to take determination of your fate into your own hands, that is the moment you can be crushed. Be cautious. Allow for surprises. When we create, there are always other forces at work.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+There's no secret to balance. You just have to feel the waves.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- Darwi Odrade\index{Darwi Odrade}
+\end{adjustwidth}
+}
+
+\vbox{
+\fancybreak{\pfbreakdisplay}
+Paired opposites define your longings and those longings imprison you.
+\vspace{10pt}
+\begin{adjustwidth}{1.5em}{}\small
+--- The Zensunni Whip\index{Zensunni Whip}
+\end{adjustwidth}
+}
+
+\backmatter
+
+% https://tex.stackexchange.com/a/165979
+\let\originalstyle=\thispagestyle
+\def\thispagestyle#1{}
+\printindex
+\let\thispagestyle=\originalstyle
+
+\end{document}
