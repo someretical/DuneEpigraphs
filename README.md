@@ -4,8 +4,10 @@ This is a "book" I *typeset* for fun. It contains **heavy spoilers** for the Dun
 
 ## Printing
 
-For best results, print the file named ``print.pdf`` on double sided A4 paper. I would then recommend binding it to make it a proper book.
+For best results, print the file named ``print_dune_epigraphs.pdf`` on double sided A4 paper. I would then recommend binding it to make it a proper book.
+
+The ``compressed_dune_epigraphs.pdf`` version is suitable for eBook viewing.
 
 ## Compiling
 
-There are no special requirements for compiling. You might have to install the `fourier` package manually as it doesn't come with most basic TeX distributions.
+There are no special requirements for compiling.
